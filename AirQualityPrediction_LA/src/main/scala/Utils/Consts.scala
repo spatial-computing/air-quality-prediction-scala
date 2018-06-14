@@ -33,4 +33,6 @@ object Consts {
 
   val iter = 200
 
+  //val outputFilePath = "/Users/pzq317/Documents/GitHub/prisms-air-quality-modeling/"
+  val outputFilePath = "/home/jjow/FishNetData/"
 }

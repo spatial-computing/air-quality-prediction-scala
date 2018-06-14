@@ -7,6 +7,7 @@ import DataSources.{Airnow, GeoFeatures}
 import Modeling.{Clustering, ProcUtils, Regression}
 import Utils.Consts
 import Utils.MLUtils.standardScaler
+
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.sql.types._
@@ -24,14 +25,42 @@ object GeoContext_CV {
 
     val t1 = System.currentTimeMillis()
     val timeResolution = Consts.hourly
-    val writer = new PrintWriter(new File(s"/home/yijun/prisms/0418_GeoContext.txt"))
+    val writer = new PrintWriter(new File("/Users/pzq317/Documents/GitHub/prisms-air-quality-modeling/0418_GeoContext.txt"))
     writer.write("target_area,time,prediction,groundtruth\n")
 
 
     val sensorOrFishnet = List("sensor", "sensor_id")
 
     val airnow = Airnow.dbReadAirnow(timeResolution, sparkSession).cache()
+    /*
+    +------------------+--------------------+----------+----+
+    |         sensor_id|           timestamp| unix_time| aqi|
+    +------------------+--------------------+----------+----+
+    |   Southeast LA CO|2016-11-03 16:00:...|1478214000|33.0|
+    |E San Fernando Vly|2016-11-03 16:00:...|1478214000|52.0|
+    |     SW Coastal LA|2016-11-03 16:00:...|1478214000|22.0|
+    | E San Gabriel V-2|2016-11-03 16:00:...|1478214000|23.0|
+    |W San Fernando Vly|2016-11-03 16:00:...|1478214000|52.0|
+    |     Central LA CO|2016-11-03 16:00:...|1478214000|52.0|
+    | W San Gabriel Vly|2016-11-03 16:00:...|1478214000|15.0|
+    |     NW Coastal LA|2016-11-03 16:00:...|1478214000|22.0|
+    | SW San Bernardino|2016-11-03 16:00:...|1478214000|51.0|
+    |   San Gabriel Mts|2016-11-03 16:00:...|1478214000|23.0|
+    | Santa Clarita Vly|2016-11-03 16:00:...|1478214000|18.0|
+    |  South Coastal LA|2016-11-03 16:00:...|1478214000|22.0|
+    |   Southeast LA CO|2016-11-03 17:00:...|1478217600|36.5|
+    +------------------+--------------------+----------+----+
+     */
     val geoFeatures = GeoFeatures.geoFeatureConstruction(sensorOrFishnet, sparkSession)
+    /*+-------------+------------+-----------+------------------+----------+
+      |    sensor_id|feature_type|buffer_size|             value|   feature|
+      +-------------+------------+-----------+------------------+----------+
+      |Central LA CO|     parking|        100|4690.3675395724895|landusages|
+      |Central LA CO|  substation|        100| 2240.223978560517|landusages|
+      |Central LA CO|  substation|        200| 3899.880804825339|landusages|
+      |Central LA CO|     parking|        200|11544.279012020103|landusages|
+      |Central LA CO| residential|        300|5081.1503244639025|landusages|
+      +-------------+------------+-----------+------------------+----------+*/
     //    println(s"Total number of available AQI records = ${airnow.count()}")
 
     val key = "sensor_id"
@@ -39,11 +68,14 @@ object GeoContext_CV {
     val geoColMap = Map("key"-> "sensor_id", "feature" -> "feature", "type" -> "feature_type", "size" -> "buffer_size", "val" -> "value")
 
     val sensors = airnow.rdd.map(x => x.getAs[String](key)).distinct().collect()
-
+    //x:Row type sensors:12 sensor name in a Array[String]
     val featureName = GeoFeatures.getFeatureNames(geoFeatures, geoColMap, sparkSession)
+    //featureName : drop sensor_id & value and convert to RRD type
+
     println(System.currentTimeMillis() - t1)
 
     val geoAbs = ProcUtils.getGeoAbs(sensors, geoFeatures, geoColMap, featureName, sparkSession).cache()
+
     println(System.currentTimeMillis() - t1)
 
     val schema1 = new StructType()
@@ -54,7 +86,7 @@ object GeoContext_CV {
       .add(StructField("error", DoubleType, true))
       .add(StructField("sqrError", DoubleType, true))
     var res = sparkSession.createDataFrame(sparkSession.sparkContext.emptyRDD[Row], schema1)
-
+    //create a empty df with emptyRDD and schema1
     val schema2 = new StructType()
       .add(StructField("sensor_id", StringType, true))
       .add(StructField("timestamp", TimestampType, true))
@@ -64,13 +96,24 @@ object GeoContext_CV {
     for (target <- sensors) {
 
       val k = Consts.kHourlyMap(target)
-
       val trainingAirnow = airnow.filter(airnow.col(aqiColMap("key")) =!= target)
       val trainingAbs = geoAbs.filter(geoAbs.col(geoColMap("key")) =!= target)
-      val clusterRes = Clustering.kmeansClustering(trainingAirnow, Consts.iter, k, aqiColMap, "cluster", sparkSession)
+      //trainingAbs:11rows in total
 
+      val clusterRes = Clustering.kmeansClustering(trainingAirnow, Consts.iter, k, aqiColMap, "cluster", sparkSession)
+      /*+------------------+--------------------+--------------------+-------+
+        |         sensor_id|                 aqi|         scaled(aqi)|cluster|
+        +------------------+--------------------+--------------------+-------+*/
       val featureImportance = Regression.getFeatureImportance(trainingAbs, clusterRes, aqiColMap("key"), "features", "cluster", "prediction")
-      val geoCon = ProcUtils.getGeoCon(geoAbs, featureImportance, key, "features", sparkSession)
+      //fe
+      //use clustered group as label to find out feature importance Array[Double]
+
+      val geoCon = ProcUtils.getGeoCon(geoAbs, featureImportance, aqiColMap("key"), "features", sparkSession)
+
+      //??key here == sensor_id?
+      //geo context geoAbs*featureImportance
+      //no multiplication
+      //it is just the feature with none 0 importance, no multiplication
 //      val pcaGeoCon = ProcUtils.reduceDimension(geoCon, 5, key, "features", sparkSession)
 
       val all = airnow.join(geoCon, key)

@@ -7,8 +7,9 @@ object GeoFeatures {
 
   def geoFeatureConstruction(sensorOrFishnet: List[String],
                              sparkSession: SparkSession): DataFrame = {
-
+    /*sensorOrFishnet(0) could be "sensor" or "Fishnet" for table reading sensorOrFishnet(1) is column name*/
     val landusages = dbReadGeoFeatures("landusages", sensorOrFishnet, sparkSession)
+      /*add a column with col name feature*/
       .withColumn("feature", functions.lit("landusages"))
     val waterareas = dbReadGeoFeatures("waterareas", sensorOrFishnet, sparkSession)
       .withColumn("feature", functions.lit("waterareas"))
@@ -29,12 +30,12 @@ object GeoFeatures {
 
 
   def getFeatureNames(geoFeatures: DataFrame,
-                      c: Map[String, String],
+                      colMap: Map[String, String],
                       sparkSession: SparkSession): RDD[(String, String, Int)] = {
 
-    val distinctFeatures = geoFeatures.drop(c("key"), c("val"))
-    val distinctFeaturesRdd = distinctFeatures.rdd.map(x => (x.getAs[String](c("feature")),
-      x.getAs[String](c("type")), x.getAs[Int](c("size")))).distinct()
+    val distinctFeatures = geoFeatures.drop(colMap("key"), colMap("val"))
+    val distinctFeaturesRdd = distinctFeatures.rdd.map(x => (x.getAs[String](colMap("feature")),
+      x.getAs[String](colMap("type")), x.getAs[Int](colMap("size")))).distinct()
 
     distinctFeaturesRdd
   }

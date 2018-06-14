@@ -26,6 +26,7 @@ object Regression {
 
   def getFeatureImportance(trainingAbs: DataFrame, clusterRes: DataFrame, key: String,
                            featureCol: String, labelCol: String, outputCol: String):
+                            //"features","cluster","prediction"
   Array[Double] = {
 
     val df = trainingAbs.join(clusterRes, key)

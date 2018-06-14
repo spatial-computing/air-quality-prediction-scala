@@ -21,13 +21,26 @@ object Airnow {
   // Get AQI at all timestamp
   def dbReadAirnow (timeResolution: String,
                     sparkSession: SparkSession): DataFrame = {
-
+    //timeResolution = hourly or daily or monthly
     val schema = "los_angeles"
     val tableName = s"los_angeles_pm25_$timeResolution"
     val cols = List("sensor_id", "timestamp", "aqi", "mean_aqi") // Can be changed into median
     var airnowDF = DBConnection.dbReadData(schema, tableName, cols, "", sparkSession)
     airnowDF = airnowDF.withColumn("unix_time", functions.unix_timestamp(airnowDF.col("timestamp")))// * nanoSeconds)
+
     filterNullValue(airnowDF)
+  }
+
+  def dbReadAirnowFishNet (sparkSession: SparkSession): DataFrame = {
+
+    val tableName = "airnow_reporting_area"
+    val cols = List("reporting_area", "date_observed", "aqi") // Can be changed into median
+    val conditions = "where parameter_name='PM2.5' and reporting_area != 'E San Gabriel V-2' AND reporting_area != 'E San Gabriel V-1' AND reporting_area != 'Antelope Vly'"
+    var airnowDF = DBConnection.dbReadDataFishNet(tableName, cols,conditions , sparkSession)
+    val newNames = Seq("sensor_id","timestamp","aqi")
+    airnowDF = airnowDF.toDF(newNames: _*)
+    airnowDF = airnowDF.withColumn("unix_time", functions.unix_timestamp(airnowDF.col("timestamp")))// * nanoSeconds)
+    airnowDF.filter(airnowDF.col("aqi").isNotNull)
   }
 
   // Get AQI at all timestamp
@@ -56,5 +69,10 @@ object Airnow {
       .drop("aqi", "mean_aqi")
       .withColumnRenamed("aqi_new", "aqi")
     df
+  }
+
+  def getLatesetTimestamp(sparkSession:SparkSession): String ={
+    val airnowDF = DBConnection.getMaxTimestamp(sparkSession)
+    airnowDF
   }
 }

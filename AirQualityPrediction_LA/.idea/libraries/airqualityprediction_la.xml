@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="airqualityprediction_la">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/airqualityprediction_la_jar/AirQualityPrediction_LA.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

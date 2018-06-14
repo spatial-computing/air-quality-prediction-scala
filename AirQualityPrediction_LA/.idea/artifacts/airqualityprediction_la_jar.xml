@@ -1,9 +1,9 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="airqualityprediction_la:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/airqualityprediction_la_jar</output-path>
-    <root id="archive" name="airqualityprediction_la.jar">
+  <artifact type="jar" name="AirQualityPrediction_LA:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AirQualityPrediction_LA_jar</output-path>
+    <root id="archive" name="AirQualityPrediction_LA.jar">
+      <element id="module-output" name="airqualityprediction_la-build" />
       <element id="module-output" name="airqualityprediction_la" />
-      <element id="library" level="module" name="sbt: unmanaged-sources-and-docs" module-name="airqualityprediction_la" />
       <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.postgresql/postgresql/bundles/postgresql-9.4.1211.jre7.jar" path-in-jar="/" />
     </root>
   </artifact>

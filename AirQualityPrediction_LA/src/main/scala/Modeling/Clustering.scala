@@ -22,13 +22,29 @@ object Clustering {
 
   }
 
-  def kmeansClustering(observation : DataFrame, iter: Int, k: Int, c: Map[String, String],
+  def kmeansClustering(observation : DataFrame, iter: Int, k: Int, colMap: Map[String, String],
                        outputCol: String, sparkSession : SparkSession):
   DataFrame = {
 
-    val timeSeries = timeSeriesConstruction(observation, c("key"), c("time"), c("val"), sparkSession)
-    val scaledTimeSeries = standardScaler(timeSeries, c("val"), s"scaled(${c("val")})")
-    k_means(scaledTimeSeries, k, iter, s"scaled(${c("val")})", outputCol)
+    val timeSeries = timeSeriesConstruction(observation, colMap("key"), colMap("time"), colMap("val"), sparkSession)
+    val scaledTimeSeries = standardScaler(timeSeries, colMap("val"), s"scaled(${colMap("val")})")
+    //input column aqi output column scaled(aqi)
+    k_means(scaledTimeSeries, k, iter, s"scaled(${colMap("val")})", outputCol)
+    /*+------------------+--------------------+--------------------+-------+
+      |         sensor_id|                 aqi|         scaled(aqi)|cluster|
+      +------------------+--------------------+--------------------+-------+
+      | W San Gabriel Vly|[78.0,56.0,36.0,7...|[2.64110490386389...|      5|
+      |   San Gabriel Mts|[51.0,17.0,35.0,6...|[-0.4110669111072...|      6|
+      | SW San Bernardino|[61.0,26.0,44.666...|[0.71936709443763...|      1|
+      |W San Fernando Vly|[55.0,36.0,54.0,7...|[0.04110669111072...|      3|
+      |E San Fernando Vly|[55.0,36.0,54.0,7...|[0.04110669111072...|      3|
+      |     NW Coastal LA|[52.0,36.0,21.25,...|[-0.2980235105527...|      7|
+      | Santa Clarita Vly|[43.0,12.0,50.0,6...|[-1.3154141155431...|      2|
+      |     SW Coastal LA|[52.0,36.0,21.25,...|[-0.2980235105527...|      7|
+      | E San Gabriel V-2|[51.0,17.0,35.0,2...|[-0.4110669111072...|      4|
+      |  South Coastal LA|[52.0,36.0,21.25,...|[-0.2980235105527...|      7|
+      |   Southeast LA CO|[51.0,43.0,17.0,6...|[-0.4110669111072...|      0|
+      +------------------+--------------------+--------------------+-------+*/
   }
 
   def timeSeriesConstruction (observation: DataFrame,
@@ -37,15 +53,16 @@ object Clustering {
 
   DataFrame = {
 
-    val obsRdd = observation.rdd.map(x => (x.getAs[String](keyCol), x.getAs[Long](timeCol), x.getAs[Double](valCol)))
-    val obsMap = obsRdd.map(x => ((x._1, x._2), x._3.toString.toDouble)).collectAsMap()
-
+    val obsRdd = observation.rdd.map(x => (x.getAs[String](keyCol), x.getAs[Long](timeCol), x.getAs[Float](valCol)))
+    //keyCol:sensorid
+    val obsMap = obsRdd.map{case(key,time,value) => ((key, time), value.toString.toDouble)}.collectAsMap()
+    //toString toDouble
     val obsObj = obsRdd.map(x => x._1).distinct().collect()
     val n = obsObj.length
-
+    //n here is 11
     val times = obsRdd.map(x => (x._2, 1)).reduceByKey(_+_)
     val distinctTime = times.filter(_._2 == n).map(_._1).collect()
-
+    //at this time(one hour or day or month) every sensor has a value
     val newObs = new ArrayBuffer[(String, Array[Double])]()
     for (each <- obsObj)
       newObs += ((each, distinctTime.map(x => obsMap((each, x)))))
@@ -54,6 +71,23 @@ object Clustering {
       .map(x => (x._1, Vectors.dense(x._2)))
 
     sparkSession.createDataFrame(newObsRdd).toDF(keyCol, valCol)
+
+    //sensor name all time with value so null value in DF
+    /*  +------------------+--------------------+
+        |         sensor_id|                 aqi|
+        +------------------+--------------------+
+        | W San Gabriel Vly|[78.0,56.0,36.0,7...|
+        |   San Gabriel Mts|[51.0,17.0,35.0,6...|
+        | SW San Bernardino|[61.0,26.0,44.666...|
+        |W San Fernando Vly|[55.0,36.0,54.0,7...|
+        |E San Fernando Vly|[55.0,36.0,54.0,7...|
+        |     NW Coastal LA|[52.0,36.0,21.25,...|
+        | Santa Clarita Vly|[43.0,12.0,50.0,6...|
+        |     SW Coastal LA|[52.0,36.0,21.25,...|
+        | E San Gabriel V-2|[51.0,17.0,35.0,2...|
+        |  South Coastal LA|[52.0,36.0,21.25,...|
+        |   Southeast LA CO|[51.0,43.0,17.0,6...|
+        +------------------+--------------------+*/
   }
 }
 
