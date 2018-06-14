@@ -1,0 +1,12 @@
+Central LA CO,4
+E San Fernando Vly,3
+E San Gabriel V-2,1
+NW Coastal LA,5
+SW Coastal LA,6
+SW San Bernardino,0
+San Gabriel Mts,1
+Santa Clarita Vly,2
+South Coastal LA,6
+Southeast LA CO,5
+W San Fernando Vly,3
+W San Gabriel Vly,4

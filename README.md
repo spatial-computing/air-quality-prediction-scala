@@ -1,2 +1,4 @@
-# air-quality-prediction-model
-Build an accurate fine-scale air quality prediction model 
+# prisms-air-quality-modeling
+
+Run AirPrediction.scala 
+(cross-validation)
