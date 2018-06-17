@@ -127,7 +127,7 @@ def generate_geo_features(buffer_table, region_name, b_point, osm_tables, conn):
 
         elif geo_type == 'MULTILINESTRING':
             sql = 'select t2.id, t2.feature_type, t2.buffer_size, sum(t2.value) as value, ' \
-                  '\'{geo_feature}\'::text as geo_type, \'length\'::text as measurement ' \
+                  '\'{geo_feature}\'::text as geo_feature, \'length\'::text as measurement ' \
                   'from (select b.id, g.{feature_type} as feature_type, b.buffer_size, ' \
                   'st_length(geography(st_intersection(b.buffer, g.wkb_geometry))) as value ' \
                   'from geo_features.{buffer_table} b, temp g ' \

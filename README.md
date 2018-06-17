@@ -11,7 +11,7 @@ We are collecting meteorological data through the [Dark Sky API](https://darksky
 
 ### Geographic Data
 We are using Openstreetmap to generate geographic features for our model. For a given location, it creates the buffers (default 100m-3000m with 100m interval) around the location and compute the intersected area/length/count between those buffers and various geographic categories in Openstreetmap data (see figure below). ([Python code](/PythonCode/generate_geo_feature_types.py)) 
-![ScreenShot](/images/geoabstraction_example.png?raw=true)
+>>>>![ScreenShot](/images/geoabstraction_example.png?raw=true)
 
 ### Other data sources
 - Purple Air
@@ -29,7 +29,7 @@ You need to get the username and password for both JonSnow server and database.
 ssh -L [your local port]:localhost:5432 [your username]@jonsnow.usc.edu
 ```
 - Use Postico (only Mac) or PgAdmin to log in with database username and passward show in the figure below. [port] would be [your local port].
-![ScreenShot](/images/databaseLogin.jpg?raw=true)
+>>>>![ScreenShot](/images/databaseLogin.jpg?raw=true)
 
 ### II. crontab
 - Check all the running crontab

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="default"
+		module="prisms_airqualityprediction_2.12"
+		revision="0.1"
+		conf="test-internal"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20180507213229"/>
+	<dependencies>
+		<module organisation="com.github.nscala-time" name="nscala-time_2.12">
+			<revision name="2.18.0" status="release" pubdate="20171104233826" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/nscala-time/nscala-time" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="5">
+				<license name="Apache" url="http://www.opensource.org/licenses/Apache-2.0"/>
+				<metadata-artifact status="no" details="" size="2947" time="0" location="/Users/yijunlin/.ivy2/cache/com.github.nscala-time/nscala-time_2.12/ivy-2.18.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/github/nscala-time/nscala-time_2.12/2.18.0/nscala-time_2.12-2.18.0.pom"/>
+				<caller organisation="default" name="prisms_airqualityprediction_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="2.18.0" rev-constraint-default="2.18.0" rev-constraint-dynamic="2.18.0" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="nscala-time_2.12" type="jar" ext="jar" status="no" details="" size="201444" time="0" location="/Users/yijunlin/.ivy2/cache/com.github.nscala-time/nscala-time_2.12/jars/nscala-time_2.12-2.18.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/github/nscala-time/nscala-time_2.12/2.18.0/nscala-time_2.12-2.18.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="joda-time" name="joda-time">
+			<revision name="2.9.9" status="release" pubdate="20170323063313" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.joda.org/joda-time/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="6">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="6647" time="0" location="/Users/yijunlin/.ivy2/cache/joda-time/joda-time/ivy-2.9.9.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/joda-time/joda-time/2.9.9/joda-time-2.9.9.pom"/>
+				<caller organisation="com.github.nscala-time" name="nscala-time_2.12" conf="default, compile, runtime, master" rev="2.9.9" rev-constraint-default="2.9.9" rev-constraint-dynamic="2.9.9" callerrev="2.18.0"/>
+				<artifacts>
+					<artifact name="joda-time" type="jar" ext="jar" status="no" details="" size="634048" time="0" location="/Users/yijunlin/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.9.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/joda-time/joda-time/2.9.9/joda-time-2.9.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.joda" name="joda-convert">
+			<revision name="1.2" status="release" pubdate="20111027125117" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://joda-convert.sourceforge.net" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="7">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3246" time="0" location="/Users/yijunlin/.ivy2/cache/org.joda/joda-convert/ivy-1.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/joda/joda-convert/1.2/joda-convert-1.2.pom"/>
+				<caller organisation="com.github.nscala-time" name="nscala-time_2.12" conf="default, compile, runtime, master" rev="1.2" rev-constraint-default="1.2" rev-constraint-dynamic="1.2" callerrev="2.18.0"/>
+				<artifacts>
+					<artifact name="joda-convert" type="jar" ext="jar" status="no" details="" size="38460" time="0" location="/Users/yijunlin/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.2.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/joda/joda-convert/1.2/joda-convert-1.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.databricks" name="spark-csv_2.11">
+			<revision name="1.5.0" status="release" pubdate="20160905140711" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/databricks/spark-csv" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="2">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+				<metadata-artifact status="no" details="" size="4060" time="0" location="/Users/yijunlin/.ivy2/cache/com.databricks/spark-csv_2.11/ivy-1.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/databricks/spark-csv_2.11/1.5.0/spark-csv_2.11-1.5.0.pom"/>
+				<caller organisation="default" name="prisms_airqualityprediction_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="1.5.0" rev-constraint-default="1.5.0" rev-constraint-dynamic="1.5.0" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="spark-csv_2.11" type="jar" ext="jar" status="no" details="" size="167269" time="0" location="/Users/yijunlin/.ivy2/cache/com.databricks/spark-csv_2.11/jars/spark-csv_2.11-1.5.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/databricks/spark-csv_2.11/1.5.0/spark-csv_2.11-1.5.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.univocity" name="univocity-parsers">
+			<revision name="1.5.1" status="release" pubdate="20150408155631" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/uniVocity/univocity-parsers" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="4">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3712" time="0" location="/Users/yijunlin/.ivy2/cache/com.univocity/univocity-parsers/ivy-1.5.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/univocity/univocity-parsers/1.5.1/univocity-parsers-1.5.1.pom"/>
+				<caller organisation="com.databricks" name="spark-csv_2.11" conf="default, compile, runtime, master" rev="1.5.1" rev-constraint-default="1.5.1" rev-constraint-dynamic="1.5.1" callerrev="1.5.0"/>
+				<artifacts>
+					<artifact name="univocity-parsers" type="jar" ext="jar" status="no" details="" size="148962" time="0" location="/Users/yijunlin/.ivy2/cache/com.univocity/univocity-parsers/jars/univocity-parsers-1.5.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/univocity/univocity-parsers/1.5.1/univocity-parsers-1.5.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.commons" name="commons-csv">
+			<revision name="1.1" status="release" pubdate="20141116124846" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/proper/commons-csv/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="3">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="10973" time="0" location="/Users/yijunlin/.ivy2/cache/org.apache.commons/commons-csv/ivy-1.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/commons/commons-csv/1.1/commons-csv-1.1.pom"/>
+				<caller organisation="com.databricks" name="spark-csv_2.11" conf="default, compile, runtime, master" rev="1.1" rev-constraint-default="1.1" rev-constraint-dynamic="1.1" callerrev="1.5.0"/>
+				<artifacts>
+					<artifact name="commons-csv" type="jar" ext="jar" status="no" details="" size="36888" time="0" location="/Users/yijunlin/.ivy2/cache/org.apache.commons/commons-csv/jars/commons-csv-1.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/apache/commons/commons-csv/1.1/commons-csv-1.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.postgresql" name="postgresql">
+			<revision name="9.4.1211.jre7" status="release" pubdate="20160918100553" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="1">
+				<license name="The PostgreSQL License" url="http://www.postgresql.org/about/licence/"/>
+				<metadata-artifact status="no" details="" size="5476" time="0" location="/Users/yijunlin/.ivy2/cache/org.postgresql/postgresql/ivy-9.4.1211.jre7.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/postgresql/postgresql/9.4.1211.jre7/postgresql-9.4.1211.jre7.pom"/>
+				<caller organisation="default" name="prisms_airqualityprediction_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="9.4.1211.jre7" rev-constraint-default="9.4.1211.jre7" rev-constraint-dynamic="9.4.1211.jre7" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="postgresql" type="bundle" ext="jar" status="no" details="" size="674275" time="0" location="/Users/yijunlin/.ivy2/cache/org.postgresql/postgresql/bundles/postgresql-9.4.1211.jre7.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/postgresql/postgresql/9.4.1211.jre7/postgresql-9.4.1211.jre7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.12.0" status="release" pubdate="20161028160730" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.12.0/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="0">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2653" time="0" location="/Users/yijunlin/.ivy2/cache/org.scala-lang/scala-library/ivy-2.12.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.0/scala-library-2.12.0.pom"/>
+				<caller organisation="com.databricks" name="spark-csv_2.11" conf="default, compile, runtime, master" rev="2.12.0" rev-constraint-default="2.12.0" rev-constraint-dynamic="2.12.0" callerrev="1.5.0"/>
+				<caller organisation="com.github.nscala-time" name="nscala-time_2.12" conf="default, compile, runtime, master" rev="2.12.0" rev-constraint-default="2.12.0" rev-constraint-dynamic="2.12.0" callerrev="2.18.0"/>
+				<caller organisation="default" name="prisms_airqualityprediction_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="2.12.0" rev-constraint-default="2.12.0" rev-constraint-dynamic="2.12.0" callerrev="0.1"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="5451017" time="0" location="/Users/yijunlin/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.0/scala-library-2.12.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="ch.cern.sparkmeasure" name="spark-measure_2.12">
+			<revision name="0.11" error="not found" downloaded="false" searched="false" conf="default(compile)" position="-1">
+				<caller organisation="default" name="prisms_airqualityprediction_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="0.11" rev-constraint-default="0.11" rev-constraint-dynamic="0.11" callerrev="0.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.spark" name="spark-hive_2.12">
+			<revision name="2.1.0" error="not found" downloaded="false" searched="false" conf="default(compile)" position="-1">
+				<caller organisation="default" name="prisms_airqualityprediction_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="2.1.0" rev-constraint-default="2.1.0" rev-constraint-dynamic="2.1.0" callerrev="0.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.spark" name="spark-streaming_2.12">
+			<revision name="2.1.0" error="not found" downloaded="false" searched="false" conf="default(compile)" position="-1">
+				<caller organisation="default" name="prisms_airqualityprediction_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="2.1.0" rev-constraint-default="2.1.0" rev-constraint-dynamic="2.1.0" callerrev="0.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.spark" name="spark-mllib_2.12">
+			<revision name="2.1.0" error="not found" downloaded="false" searched="false" conf="default(compile)" position="-1">
+				<caller organisation="default" name="prisms_airqualityprediction_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="2.1.0" rev-constraint-default="2.1.0" rev-constraint-dynamic="2.1.0" callerrev="0.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.spark" name="spark-sql_2.12">
+			<revision name="2.1.0" error="not found" downloaded="false" searched="false" conf="default(compile)" position="-1">
+				<caller organisation="default" name="prisms_airqualityprediction_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="2.1.0" rev-constraint-default="2.1.0" rev-constraint-dynamic="2.1.0" callerrev="0.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.spark" name="spark-core_2.12">
+			<revision name="2.1.0" error="not found" downloaded="false" searched="false" conf="default(compile)" position="-1">
+				<caller organisation="default" name="prisms_airqualityprediction_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="2.1.0" rev-constraint-default="2.1.0" rev-constraint-dynamic="2.1.0" callerrev="0.1"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
