@@ -10,8 +10,6 @@ cursor = conn.cursor()
 #create table
 '''
 cursor.execute("CREATE TABLE purpleair.sensorData(uid bigint NOT NULL DEFAULT nextval('purpleair_seq'::regclass),id Int,timestamp timestamp with time zone, entry_id Int, PM1_ATM real,PM2_5_ATM real, PM10_ATM real, uptime Int, rssi real, temperature real, humidity real, PM2_5_CF_1 real, CONSTRAINT sensordata_pkey PRIMARY KEY (uid))")
-	
-#print(record[0])
 conn.commit()
 '''
 
@@ -28,7 +26,7 @@ def replaceAlphabat(str):
 
 #get every maxtime for each sensor, the time resolution is slightly different 
 cursor.execute('select id , max(timestamp) at time zone \'UTC\''\
-				'from purpleair.purpleair_los_angeles_sensor_minute '\
+				'from purpleair.sensordata '\
 				'group by id')
 idAndTime = cursor.fetchall()
 conn.commit()
@@ -40,7 +38,7 @@ for dt in idAndTime:
 	timeDict[str(id)] = max_time
 
 
-cursor.execute("SELECT * FROM purpleair.purpleair_los_angeles_sensor_location ")
+cursor.execute("SELECT * FROM purpleair.purplair_sensor_la ")
 records = cursor.fetchall()
 conn.commit()
 
@@ -58,7 +56,7 @@ for record in records:
 
 		maxdt = timeDict[str(record[0])]
 		if (timestamp>maxdt):
-			cursor.execute('INSERT INTO purpleair.purpleair_los_angeles_sensor_minute  VALUES({uid},{id},\'{time}\',{entry_id},' \
+			cursor.execute('INSERT INTO purpleair.sensordata  VALUES({uid},{id},\'{time}\',{entry_id},' \
 				'{PM1_ATM},{PM2_5_ATM}, {PM10_ATM}, {uptime}, {rssi} , {temperature},{humidity}, {PM2_5_CF_1});'\
 				.format(uid='nextval(\'purpleair_seq\')',
 					id = data1["channel"]["id"],

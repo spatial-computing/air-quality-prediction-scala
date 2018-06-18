@@ -31,7 +31,8 @@ object Main {
     }
 
     val stageMetrics = ch.cern.sparkmeasure.StageMetrics(sparkSession)
-    stageMetrics.runAndMeasure(FishnetPrediction.fishnetPrediction(config, sparkSession))
+//    stageMetrics.runAndMeasure(FishnetPrediction.fishnetPrediction(config, sparkSession))
+    stageMetrics.runAndMeasure(PredictionCV.cvPrediction(config, sparkSession))
     scala.io.StdIn.readLine()
   }
 
