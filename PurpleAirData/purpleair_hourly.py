@@ -60,10 +60,10 @@ for dt in timeCenter:
                        dt[0].minute, dt[0].second, tzinfo=timezone('UTC'))
 
     cursor.execute('select timestamp,id, median, ST_SetSRID(location,4326) '\
-                    'from purpleair.purplair_sensor_la '\
+                    'from purpleair.purpleair_los_angeles_sensor_location '\
                     'join (select id, median(pm2_5_atm),\'{time}\' '\
                     'at time zone \'America/Los_Angeles\' as timestamp '\
-                    'from purpleair.sensordata '\
+                    'from purpleair.purpleair_los_angeles_sensor_minute '\
                     'where timestamp > \'{time}\'at time zone \'America/Los_Angeles\' -(10 * interval \'1 minute\') '\
                     'AND timestamp < \'{time}\'at time zone \'America/Los_Angeles\' +(10 * interval \'1 minute\') '\
                     'group by id ) as medianTable on id = sensor_id'\
@@ -74,7 +74,7 @@ for dt in timeCenter:
     for each in hourlyData:
         aqi = concentrationtoaqi(each[2])
         if aqi:
-            cursor.execute('insert into purpleair.purpleair_sensor_la_hourly values({uid}'
+            cursor.execute('insert into purpleair.purpleair_los_angeles_sensor_hourly values({uid}'
                            ',\'{timestamp}\',{id},{median},{con},\'{location}\')'
                            .format(uid='nextval(\'purpleair.purpleair_sensor_la_hourly_seq\')',
                                    timestamp=each[0],
@@ -93,7 +93,7 @@ cursor.execute('select max(date_observed) at time zone \'UTC\' '\
 timeCenter = cursor.fetchall()
 conn.commit()
 cursor.execute('select max(timestamp) at time zone \'UTC\' '\
-               'from purpleair.purpleair_sensor_la_hourly ')
+               'from purpleair.purpleair_los_angeles_sensor_hourly ')
 purplemaxtime = cursor.fetchall()
 conn.commit()
 #get the max time
@@ -104,10 +104,10 @@ purplemaxtimeUTC = datetime(purplemaxtime[0][0].year, purplemaxtime[0][0].month,
 #compare time
 if(timeUTC>purplemaxtimeUTC):
     cursor.execute('select timestamp,id, median, ST_SetSRID(location,4326) ' \
-                   'from purpleair.purplair_sensor_la ' \
+                   'from purpleair.purpleair_los_angeles_sensor_location' \
                    'join (select id, median(pm2_5_atm),\'{time}\' ' \
                    'at time zone \'America/Los_Angeles\' as timestamp ' \
-                   'from purpleair.sensordata ' \
+                   'from purpleair.purpleair_los_angeles_sensor_minute ' \
                    'where timestamp > \'{time}\'at time zone \'America/Los_Angeles\' -(10 * interval \'1 minute\') ' \
                    'AND timestamp < \'{time}\'at time zone \'America/Los_Angeles\' +(10 * interval \'1 minute\') ' \
                    'group by id ) as medianTable on id = sensor_id' \
@@ -118,7 +118,7 @@ if(timeUTC>purplemaxtimeUTC):
     for each in hourlyData:
         aqi = concentrationtoaqi(each[2])
         if aqi:
-            cursor.execute('insert into purpleair.purpleair_sensor_la_hourly values({uid}'
+            cursor.execute('insert into purpleair.purpleair_los_angeles_sensor_hourly values({uid}'
                            ',\'{timestamp}\',{id},{median},{con},\'{location}\')'
                            .format(uid='nextval(\'purpleair.purpleair_sensor_la_hourly_seq\')',
                                    timestamp=each[0],
