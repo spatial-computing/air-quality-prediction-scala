@@ -1,0 +1,48 @@
+{
+  "Air_Quality": "airnow_reporting_area",
+  "Air_Quality_Cols": [
+    "reporting_area",
+    "date_observed",
+    "aqi"
+  ],
+  "Conditions": "where parameter_name='PM2.5'",
+  "Unix_Time_Col": "unix_time",
+  "Output_Label_Col": "value",
+  "Output_Scaled_Feature_Col": "scaled_features",
+  "Output_Geo_Feature_Col": "geo_features",
+  "Output_Result_Col": "prediction",
+  "Win_Size": 3,
+  "Win_Method": "median",
+  "Geo_Features": [
+    "landuse_a",
+    "railways",
+    "roads",
+    "latitude"
+  ],
+  "Geo_Features_Cols":[
+    "id",
+    "geo_feature",
+    "feature_type",
+    "buffer_size",
+    "value"
+  ],
+  "Fishnet": "los_angeles_fishnet",
+  "Fishnet_Cols": [
+    "gid",
+    "geom"
+  ],
+  "Current": false,
+  "From_Time_to_Time": true,
+  "Start_Time": "2017-01-01 00:00:00",
+  "End_Time": "2018-01-01 00:00:00",
+  "Kmeans_K": 5,
+  "RF_Classifier_Tree_Num": 100,
+  "RF_Classifier_Tree_Depth": 5,
+  "RF_Regression_Tree_Num": 100,
+  "RF_Regression_Tree_Depth": 5,
+  "Write_to_DB": true,
+  "Write_to_CSV": true,
+  "Output_CSV_Path": "src/data/result",
+  "Add_Weather": false,
+  "Weather": "airnow_reporting_area_weather"
+}
