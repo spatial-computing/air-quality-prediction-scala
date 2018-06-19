@@ -7,14 +7,17 @@ import scala.collection.Map
 
 object AirQualityData {
 
-
-  def getAirQualityTimeSeries (airQualityData: DataFrame, config: Map[String, Any],
+  def getAirQualityTimeSeries (config: Map[String, Any],
                                sparkSession: SparkSession):
   (DataFrame, DataFrame) = {
 
+    val airQuality = config("Air_Quality").asInstanceOf[String]
     val airQualityCols = config("Air_Quality_Cols").asInstanceOf[List[String]]
+    val conditions = config("Conditions").asInstanceOf[String]
     val unixTimeCol = config("Unix_Time_Col").asInstanceOf[String]
     val winOutputValueCol = config("Output_Label_Col").asInstanceOf[String]
+
+    var airQualityData = DBConnection.dbReadData(airQuality, airQualityCols, conditions, sparkSession)
 
     /*
         Add column "unix_time": represent convert a timestamp to unix time

@@ -1,5 +1,6 @@
 package Modeling
 
+import Utils.TimeUtils
 import WinOps.WindowSession
 import org.apache.spark.ml.linalg.Vectors
 import org.apache.spark.sql.{DataFrame, SparkSession, functions}
@@ -23,7 +24,7 @@ object TimeSeriesProcessing {
     val winOutputValueCol = config("Output_Label_Col").asInstanceOf[String]
 
     //    Add unix_time col
-    var df_new = df.withColumn(unixTimeCol, functions.unix_timestamp(df.col(timeCol)))  // * nanoSeconds)
+    var df_new = TimeUtils.getUnixTimestamp(df, timeCol, unixTimeCol)
 
     //    Compute moving mean and median in w hr sliding window
     val win = new WindowSession(idCol, unixTimeCol)

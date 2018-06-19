@@ -1,48 +1,10 @@
 package Modeling
 
-import DataSources.GeoFeatureUtils
-import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.DataFrame
 
 import scala.collection.Map
 
-object PredictionHelper {
-
-  def modeling(timeSeries: DataFrame,
-               trainingLoc: List[String], testingLoc: List[String],
-               geoAbstraction: DataFrame, featureName: RDD[(String, String, Int)],
-               trainingGeoFeatures: DataFrame, testingGeoFeatures: DataFrame,
-               trainingCols: List[String], testingCols: List[String],
-               outputLabelCol: String, outputGeoFeatureCol: String, outputScaledFeatureCol: String,
-               config: Map[String, Any], sparkSession: SparkSession):
-
-  (DataFrame, DataFrame) = {
-
-    /*
-        Clustering on time series data
-     */
-    val k = config("Kmeans_K").asInstanceOf[Double].toInt
-    val ssTimeSeries = FeatureTransforming.standardScaler(timeSeries, outputLabelCol, outputScaledFeatureCol)
-    val tsCluster = SparkML.kMeans(ssTimeSeries, outputScaledFeatureCol, "cluster", k, 100)
-
-    /*
-        Get important features
-     */
-    val featureImportance = getFeatureImportance(geoAbstraction, tsCluster, outputGeoFeatureCol, "cluster", "prediction", config)
-    val importantFeaturesName = GeoFeatureUtils.getImportantFeaturesName(featureName, featureImportance)
-
-    /*
-        Get geo-context
-     */
-    val trainingContext = GeoFeatureUtils.getGeoContext(trainingGeoFeatures, trainingCols.head, trainingLoc, importantFeaturesName, config, sparkSession)
-    val testingContext = GeoFeatureUtils.getGeoContext(testingGeoFeatures, testingCols.head, testingLoc, importantFeaturesName, config, sparkSession)
-
-    val ssTrainingContext = FeatureTransforming.standardScaler(trainingContext, outputGeoFeatureCol, outputScaledFeatureCol).cache()
-    val ssTestingContext = FeatureTransforming.standardScaler(testingContext, outputGeoFeatureCol, outputScaledFeatureCol).cache()
-
-    (ssTrainingContext, ssTestingContext)
-  }
-
+object Modeling {
 
   def getFeatureImportance(geoAbstraction: DataFrame, tsCluster: DataFrame,
                            featureCol: String, labelCol: String, outputCol: String,

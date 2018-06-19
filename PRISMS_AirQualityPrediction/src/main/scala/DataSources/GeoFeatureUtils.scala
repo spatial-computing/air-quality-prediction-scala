@@ -40,9 +40,8 @@ object GeoFeatureUtils {
     importantFeaturesName.toArray
   }
 
-  def getGeoAbstraction(stations: List[String], geoFeatures: DataFrame,
-                        featureName: RDD[(String, String, Int)],
-                        config: Map[String, Any], sparkSession: SparkSession):
+  def getGeoAbstraction(stations: List[String], geoFeatures: DataFrame, config: Map[String, Any],
+                        featureName: RDD[(String, String, Int)], sparkSession: SparkSession):
   DataFrame = {
 
     val geoFeaturesCols = config("Geo_Features_Cols").asInstanceOf[List[String]]
@@ -67,6 +66,7 @@ object GeoFeatureUtils {
     }
 
     val geoFeaturesRdd = sparkSession.sparkContext.parallelize(geoFeaturesVector)
+
     sparkSession.createDataFrame(geoFeaturesRdd.map(x => (x._1, Vectors.dense(x._2)))).toDF(id, "geo_features")
   }
 
