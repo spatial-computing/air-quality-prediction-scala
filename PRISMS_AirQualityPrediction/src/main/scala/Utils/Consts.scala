@@ -2,6 +2,12 @@ package Utils
 
 object Consts {
 
+  // Pre-define k for each monitoring station in each temporal scale
+  val kHourlyMap = Map("Central LA CO"-> 8, "W San Gabriel Vly" -> 8, "San Gabriel Mts" -> 8, "SW San Bernardino" -> 8,
+    "W San Fernando Vly" -> 9, "E San Fernando Vly" -> 9, "E San Gabriel V-2" -> 8, "E San Gabriel V-1" -> 8, "NW Coastal LA" -> 9,
+    "Santa Clarita Vly" -> 8, "SW Coastal LA" -> 9, "South Coastal LA" -> 9, "Southeast LA CO" -> 8, "Antelope Vly" -> 8)
+
+
   val airnow_reporting_area_geofeature_tablename = Map(
     "landuse_a" -> "geo_features.airnow_reporting_areas_geofeature_landuse_a",
     "natural" -> "geo_features.airnow_reporting_areas_geofeature_natural",
@@ -48,25 +54,25 @@ object Consts {
     "latitude" -> "geo_features.la_fishnet_elevation"
   )
 
-  val los_angeles_geofeature_tablename = Map(
-    "aeroways" -> "los_angeles.los_angeles_sensor_geofeature_aeroways",
-    "buildings" -> "los_angeles.los_angeles_sensor_geofeature_buildings",
-    "landusages" -> "los_angeles.los_angeles_sensor_geofeature_landusages",
-    "ocean" -> "los_angeles.los_angeles_sensor_geofeature_ocean",
-    "roads" -> "los_angeles.los_angeles_sensor_geofeature_roads",
-    "waterareas" -> "los_angeles.los_angeles_sensor_geofeature_waterareas",
-    "longitude" -> "airnow_reporting_area_location",
-    "latitude" -> "airnow_reporting_area_location"
-  )
-
-  val los_angeles_fishnet_geofeature_tablename = Map(
-    "aeroways" -> "los_angeles.los_angeles_fishnet_geofeature_aeroways",
-    "buildings" -> "los_angeles.los_angeles_fishnet_geofeature_buildings",
-    "landusages" -> "los_angeles.los_angeles_fishnet_geofeature_landusages",
-    "ocean" -> "los_angeles.los_angeles_fishnet_geofeature_ocean",
-    "roads" -> "los_angeles.los_angeles_fishnet_geofeature_roads",
-    "waterareas" -> "los_angeles.los_angeles_fishnet_geofeature_waterareas",
-    "longitude" -> "airnow_reporting_area_location",
-    "latitude" -> "airnow_reporting_area_location"
-  )
+//  val los_angeles_geofeature_tablename = Map(
+//    "aeroways" -> "los_angeles.los_angeles_sensor_geofeature_aeroways",
+//    "buildings" -> "los_angeles.los_angeles_sensor_geofeature_buildings",
+//    "landusages" -> "los_angeles.los_angeles_sensor_geofeature_landusages",
+//    "ocean" -> "los_angeles.los_angeles_sensor_geofeature_ocean",
+//    "roads" -> "los_angeles.los_angeles_sensor_geofeature_roads",
+//    "waterareas" -> "los_angeles.los_angeles_sensor_geofeature_waterareas",
+//    "longitude" -> "airnow_reporting_area_location",
+//    "latitude" -> "airnow_reporting_area_location"
+//  )
+//
+//  val los_angeles_fishnet_geofeature_tablename = Map(
+//    "aeroways" -> "los_angeles.los_angeles_fishnet_geofeature_aeroways",
+//    "buildings" -> "los_angeles.los_angeles_fishnet_geofeature_buildings",
+//    "landusages" -> "los_angeles.los_angeles_fishnet_geofeature_landusages",
+//    "ocean" -> "los_angeles.los_angeles_fishnet_geofeature_ocean",
+//    "roads" -> "los_angeles.los_angeles_fishnet_geofeature_roads",
+//    "waterareas" -> "los_angeles.los_angeles_fishnet_geofeature_waterareas",
+//    "longitude" -> "airnow_reporting_area_location",
+//    "latitude" -> "airnow_reporting_area_location"
+//  )
 }

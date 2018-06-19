@@ -1,7 +1,6 @@
 package TSClusteringTest
 
-import Modeling.TimeSeriesClustering
-import Utils.{Consts, TimeUtils}
+import Utils.Consts
 import WinOps.WindowSession
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.{DataFrame, SparkSession, functions}
