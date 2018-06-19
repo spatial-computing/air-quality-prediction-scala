@@ -104,7 +104,7 @@ purplemaxtimeUTC = datetime(purplemaxtime[0][0].year, purplemaxtime[0][0].month,
 #compare time
 if(timeUTC>purplemaxtimeUTC):
     cursor.execute('select timestamp,id, median, ST_SetSRID(location,4326) ' \
-                   'from purpleair.purpleair_los_angeles_sensor_location' \
+                   'from purpleair.purpleair_los_angeles_sensor_location ' \
                    'join (select id, median(pm2_5_atm),\'{time}\' ' \
                    'at time zone \'America/Los_Angeles\' as timestamp ' \
                    'from purpleair.purpleair_los_angeles_sensor_minute ' \
