@@ -2,7 +2,7 @@
 #create table
 create table purpleair.purpleair_sensor_la_hourly(
 uid bigint NOT NULL DEFAULT nextval('purpleair.purpleair_sensor_la_hourly_seq'::regclass),
-timestamp timestamp with time zone,id integer, aqi real,aqi_concentration real , location GEOMETRY(Point,4326),
+timestamp timestamp with time zone,id integer, aqi real, location GEOMETRY(Point,4326),
 CONSTRAINT purpleair_sensor_la_hourly_pkey PRIMARY KEY (uid))
 
 #create sequence
