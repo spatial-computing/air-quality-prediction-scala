@@ -3,7 +3,7 @@ package Demo
 import java.sql.Timestamp
 
 import Modeling._
-import Utils.{Consts, DBConnection}
+import Utils.{Consts, DBConnectionPostgres, Evaluation}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.{DataFrame, Row, SparkSession, functions}
@@ -21,7 +21,7 @@ object CrossValidation {
 
     val predictionColumn = config("prediction_column").asInstanceOf[String]
 
-    val airQualityData = DBConnection.dbReadData(airQualityTableName, airQualityColumnSet, conditions, sparkSession)
+    val airQualityData = DBConnectionPostgres.dbReadData(airQualityTableName, airQualityColumnSet, conditions, sparkSession)
     val airQualityCleaned = TimeSeriesPreprocessing.dataCleaning(airQualityData, airQualityColumnSet, config).cache()
     val airQualityTimeSeries = TimeSeriesPreprocessing.timeSeriesConstruction(airQualityCleaned, airQualityColumnSet, config, sparkSession).cache()
 
@@ -34,6 +34,10 @@ object CrossValidation {
       .add(StructField(airQualityColumnSet.head, StringType, true))
       .add(StructField("timestamp", TimestampType, true))
       .add(StructField(predictionColumn, DoubleType, true))
+
+    var rmseTotal = 0.0
+    var maeTotal = 0.0
+    var nTotal = 0
 
     for (target <- stations) {
 
@@ -61,13 +65,15 @@ object CrossValidation {
       val trainingContext = GeoFeatureConstruction.getGeoContext(trainingStations, trainingGeoFeatures, importantFeatures, config, sparkSession)
       val testingContext = GeoFeatureConstruction.getGeoContext(testingStations, testingGeoFeatures, importantFeatures, config, sparkSession)
 
+      val testingContextId = testingContext.schema.fields.head.name
+
       /*
           Only test on the time in testing data set
        */
       val times = testingAirQuality.select(testingAirQuality.col(airQualityColumnSet(1))).distinct()
         .rdd.map(x => x.getAs[Timestamp](airQualityColumnSet(1))).collect()
 
-      var result = sparkSession.createDataFrame(sparkSession.sparkContext.emptyRDD[Row], schema)
+      var tmpResult = sparkSession.createDataFrame(sparkSession.sparkContext.emptyRDD[Row], schema)
 
       for (eachTime <- times) {
 
@@ -75,22 +81,27 @@ object CrossValidation {
         if (dt.count() >= 10) {
 
           val prediction = Prediction.predictionRandomForest(dt, trainingContext, testingContext, config)
-            .select(airQualityColumnSet.head, predictionColumn)
             .withColumn("timestamp", functions.lit(eachTime))
-            .select(airQualityColumnSet.head, "timestamp", predictionColumn)
+            .select(testingContextId, "timestamp", predictionColumn)
 
-          result = result.union(prediction)
+          tmpResult = tmpResult.union(prediction)
         }
       }
 
-      val tmp = result.join(testingAirQuality, result.col("timestamp") === testingAirQuality.col(airQualityColumnSet(1)))
+      val result = tmpResult.join(testingAirQuality, tmpResult.col("timestamp") === testingAirQuality.col(airQualityColumnSet(1)))
+      val (rmseVal, m) = Evaluation.rmse(result, airQualityColumnSet(2), predictionColumn)
+      val (maeVal, n) = Evaluation.mae(result, airQualityColumnSet(2), predictionColumn)
+      rmseTotal += rmseVal
+      maeTotal += maeVal
+      nTotal += m
+
       if (config("write_to_db") == true) {
-        DBConnection.dbWriteData(tmp, "others", "cross_validation_result")
+        DBConnectionPostgres.dbWriteData(result, "others", "cross_validation_result")
       }
 
       if (config("write_to_csv") == true) {
         val tmpDir = s"src/data/result/$target"
-        tmp.coalesce(1).write.format("com.databricks.spark.csv").option("header", true).save(tmpDir)
+        result.coalesce(1).write.format("com.databricks.spark.csv").option("header", true).save(tmpDir)
       }
     }
   }

@@ -16,8 +16,8 @@ object FeatureExtraction {
        Clustering on time series data
     */
 
-    val ssTimeSeries = FeatureTransforming.standardScaler(timeSeries, "time_series", "scaled_feature")
-    val tsCluster = SparkML.kMeans(ssTimeSeries, "scaled_feature", "cluster", k, 100)
+    val ssTimeSeries = FeatureTransforming.standardScaler(timeSeries, "time_series", "scaled_time_series_feature")
+    val tsCluster = SparkML.kMeans(ssTimeSeries, "scaled_time_series_feature", "cluster", k, 100)
     tsCluster
   }
 
@@ -37,13 +37,14 @@ object FeatureExtraction {
     val geoAbstractionId = geoAbstraction.schema.fields.head.name
 
     val df = geoAbstraction.join(tsCluster, tsCluster.col(tsClusterId) === geoAbstraction.col(geoAbstractionId))
-    val model = SparkML.randomForestClassifier(df, "scaled_feature", "cluster", "", numTree, depthTree)
+    val ssDf = FeatureTransforming.standardScaler(df, "geo_feature", "scaled_geo_feature")
+    val model = SparkML.randomForestClassifier(ssDf, "scaled_geo_feature", "cluster", "", numTree, depthTree)
     model.featureImportances.toDense.toArray
   }
 
 
   def getImportantFeature(featureName: RDD[(String, String, Int)],
-                               featureImportance: Array[Double]):
+                          featureImportance: Array[Double]):
   Array[(String, String, Int)] = {
 
     val featureCollected = featureName.collect()

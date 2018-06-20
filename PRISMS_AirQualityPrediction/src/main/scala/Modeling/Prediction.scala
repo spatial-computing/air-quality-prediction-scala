@@ -14,7 +14,6 @@ object Prediction {
     val numTree = config("rf_regression_tree_num").asInstanceOf[Double].toInt
     val depthTree = config("rf_regression_tree_depth").asInstanceOf[Double].toInt
 
-    val featureColumn = config("feature_column").asInstanceOf[String]
     val labelColumn = config("label_column").asInstanceOf[String]
     val predictionColumn = config("prediction_column").asInstanceOf[String]
 
@@ -24,8 +23,8 @@ object Prediction {
     val df = trainingAirQualityData.join(trainingGeoContext,
       trainingAirQualityData.col(trainingAirQualityId) === trainingGeoContext.col(trainingGeoContextId))
 
-    val model = SparkML.randomForestRegressor(df, featureColumn, labelColumn, predictionColumn, numTree, depthTree)
-    model.transform(testingGeoContext)
+    val model = SparkML.randomForestRegressor(df, "geo_features", labelColumn, predictionColumn, numTree, depthTree)
+    model.transform(testingGeoContext).select(trainingGeoContextId, predictionColumn)
   }
 }
 

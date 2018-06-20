@@ -24,5 +24,6 @@ libraryDependencies ++= Seq(
   "org.postgresql" % "postgresql" % "9.4.1211.jre7",
   "com.databricks" % "spark-csv_2.11" % "1.5.0",
   "ch.cern.sparkmeasure" %% "spark-measure" % "0.11",
-  "com.github.nscala-time" %% "nscala-time" % "2.18.0"
+  "com.github.nscala-time" %% "nscala-time" % "2.18.0",
+  "org.mongodb.scala" %% "mongo-scala-driver" % "2.1.0"
 )

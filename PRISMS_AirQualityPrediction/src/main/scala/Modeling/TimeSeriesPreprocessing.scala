@@ -51,7 +51,7 @@ object TimeSeriesPreprocessing {
     val locationColumn = columnSet.head
     val timeColumn = columnSet(1)
     val valueColumn = columnSet(2)
-    val unixTimeColumn = config("unix_time_Column").asInstanceOf[String]
+    val unixTimeColumn = config("unix_time_column").asInstanceOf[String]
     val labelColumn = config("label_column").asInstanceOf[String]
 
     val observationRdd = observation.rdd.map(x => (x.getAs[String](locationColumn), x.getAs[Long](unixTimeColumn), x.getAs[Double](labelColumn)))

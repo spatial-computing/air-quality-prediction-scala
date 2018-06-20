@@ -1,4 +1,5 @@
 {
+  "testing_method": "cross_validation",
   "air_quality_table_name": "airnow_reporting_area",
   "air_quality_column_set": [
     "reporting_area",
@@ -27,7 +28,7 @@
   "label_column": "label",
   "window_size": 3,
   "window_method": "median",
-  "Kmeans_K": 8,
+  "kmeans_k": 8,
   "unix_time_column": "unix_time",
   "prediction_column": "prediction",
   "current": false,

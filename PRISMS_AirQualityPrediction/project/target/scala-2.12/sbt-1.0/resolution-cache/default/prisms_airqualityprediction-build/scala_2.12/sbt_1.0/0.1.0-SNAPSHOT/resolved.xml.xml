@@ -4,7 +4,7 @@
 		module="prisms_airqualityprediction-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20180507213037"
+		publication="20180619114513"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>

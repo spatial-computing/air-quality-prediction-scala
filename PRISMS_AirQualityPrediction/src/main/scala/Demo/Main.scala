@@ -30,8 +30,18 @@ object Main {
       return
     }
 
+    val testingMethod = config("testing_method").asInstanceOf[String]
     val stageMetrics = ch.cern.sparkmeasure.StageMetrics(sparkSession)
-//    stageMetrics.runAndMeasure(FishnetPrediction.fishnetPrediction(config, sparkSession))
+
+    if (testingMethod == "fishnet")
+      stageMetrics.runAndMeasure(FishnetPrediction.prediction(config, sparkSession))
+
+    if (testingMethod == "cross_validation")
+       stageMetrics.runAndMeasure(CrossValidation.prediction(config, sparkSession))
+
+    if (testingMethod == "validation")
+      stageMetrics.runAndMeasure(Validation.prediction(config, sparkSession))
+
     stageMetrics.runAndMeasure(CrossValidation.prediction(config, sparkSession))
     scala.io.StdIn.readLine()
   }

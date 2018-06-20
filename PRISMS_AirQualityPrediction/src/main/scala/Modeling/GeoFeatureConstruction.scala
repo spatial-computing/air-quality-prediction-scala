@@ -1,6 +1,6 @@
 package Modeling
 
-import Utils.DBConnection
+import Utils.{DBConnectionPostgres}
 import org.apache.spark.ml.linalg.Vectors
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{DataFrame, Row, SparkSession}
@@ -123,33 +123,33 @@ object GeoFeatureConstruction {
       if (eachGeoFeature == "longitude") {
         val cols = List(s"id as $location", s"'location' as $geoFeature",  s"'longitude' AS $featureType",
           s"0 AS $bufferSize", s"ST_X(location) as $value")
-        val df = DBConnection.dbReadData(tableName, cols, "", sparkSession)
+        val df = DBConnectionPostgres.dbReadData(tableName, cols, "", sparkSession)
         geoFeatureData = geoFeatureData.union(df)
       }
 
       else if (eachGeoFeature == "latitude") {
         val cols = List(s"id as $location", s"'location' as $geoFeature",  s"'latitude' AS $featureType",
           s"0 AS $bufferSize", s"ST_Y(location) as $value")
-        val df = DBConnection.dbReadData(tableName, cols, "", sparkSession)
+        val df = DBConnectionPostgres.dbReadData(tableName, cols, "", sparkSession)
         geoFeatureData = geoFeatureData.union(df)
       }
 
       else if (eachGeoFeature == "ocean") {
         val cols = List(s"id as $location", s"'location' as $geoFeature",  s"'ocean' AS $featureType",
           s"0 AS $bufferSize", s"distance as $value")
-        val df = DBConnection.dbReadData(tableName, cols, "", sparkSession)
+        val df = DBConnectionPostgres.dbReadData(tableName, cols, "", sparkSession)
         geoFeatureData = geoFeatureData.union(df)
       }
 
       else if (eachGeoFeature == "elevation") {
         val cols = List(s"id as $location", s"'location' as $geoFeature",  s"'elevation' AS $featureType",
           s"0 AS $bufferSize", s"elevation as $value")
-        val df = DBConnection.dbReadData(tableName, cols, "", sparkSession)
+        val df = DBConnectionPostgres.dbReadData(tableName, cols, "", sparkSession)
         geoFeatureData = geoFeatureData.union(df)
       }
 
       else {
-        val df = DBConnection.dbReadData(tableName, geoFeatureColumnSet, "", sparkSession)
+        val df = DBConnectionPostgres.dbReadData(tableName, geoFeatureColumnSet, "", sparkSession)
         geoFeatureData = geoFeatureData.union(df)
       }
     }
