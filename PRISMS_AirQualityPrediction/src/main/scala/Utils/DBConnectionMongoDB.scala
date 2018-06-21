@@ -1,81 +1,51 @@
-//package Utils
-//
-//import java.util
-//import java.util.Properties
-//
-//import com.mongodb.{MongoCredential, ServerAddress}
-//import org.apache.spark.sql.{DataFrame, SparkSession}
-//import org.mongodb.scala.MongoClient
-//
-//object DBConnectionMongoDB {
-//
-//  def dbJDBC: String = {
-//    val hostname = "localhost"
-//    val port = 11223
-//    val collection = "jonsnow"
-//    val url = s"mongodb://$hostname:$port/$database"
-//    url
-//  }
-//
-//  def connProperties: Properties = {
-//    val properties = new Properties()
-//    properties.put("user", "jon")
-//    properties.put("password", "snow")
-//    properties.put("Driver", "org.postgresql.Driver")
-//    properties
-//  }
-//
-//  def dbReadData(tableName: String,
-//                 cols: List[String],
-//                 conditions: String,
-//                 sparkSession: SparkSession):
-//  DataFrame = {
-//
-//    val colString = cols.mkString(",")
-//    val query = s"(select $colString from $tableName $conditions) as sub"
-//    val data = sparkSession.read.jdbc(
-//      url = this.dbJDBC,
-//      table = query,
-//      properties = this.connProperties
-//    )
-//    data
-//  }
-//
-//  def dbWriteData(df: DataFrame,
-//                  schema: String,
-//                  tableName: String):
-//  Unit = {
-//
-//    val hostname = "localhost"
-//    val port = 11223
-//    val userName = "jon"
-//    val database = "jonsnow"
-//    val password = "snow"
-//
-//    try {
-//
-//      var serverAddress = new ServerAddress(hostname, port)
-//      val adds = new util.ArrayList[ServerAddress]()
-//      adds.add(serverAddress)
-//
-//      var credential = MongoCredential.createCredential(userName, database, password.toCharArray)
-//      val credentials = new util.ArrayList[MongoCredential]()
-//      credentials.add(credential)
-//
-//      val mongoClient = new MongoClient(adds, credentials)
-//
-//      val mongoDatabase = mongoClient.getDatabase(database)
-////      val collection:MongoCollection[Document] = mongoDatabase.getCollection("price_discount")
-//
-//
-//    }
-//
-//
-//
-//    catch {
-//      case e:Exception=>
-//        println(e.getClass.getName + ": " + e.getMessage)
-//    }
-//  }
-//
-//}
+package Utils
+
+
+
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
+
+import com.mongodb.casbah.commons.{MongoDBList, MongoDBObject}
+import com.mongodb.casbah.{MongoClient, MongoCollection}
+import com.mongodb.{MongoCredential, ServerAddress}
+import org.apache.spark.sql.DataFrame
+import org.joda.time.DateTime
+
+object DBConnectionMongoDB {
+
+  def connectMongoDB (): MongoCollection = {
+    val hostname = "localhost"
+    val port = 11224
+    val userName = "jon"
+    val database = "jonsnow"
+    val password = "snow"
+    val collection = "prisms"
+
+    val server = new ServerAddress(hostname, port)
+    val credentials = MongoCredential.createCredential(userName, database, password.toCharArray)
+    val mongoClient= MongoClient(server, List(credentials))
+    println("Connect MongoDB Successfully!!!")
+    val db = mongoClient.getDB(database)
+    db(collection)
+  }
+
+  def dbWriteData(df: DataFrame,
+                  time: Timestamp):
+  Unit = {
+
+    val collection = this.connectMongoDB()
+    val id = df.schema.fields.head.name
+    val value = df.schema.fields(2).name
+
+    val values = df.rdd.map(x => (x.getAs[String](id).toInt, x.getAs[Double](value)))
+      .map(x => MongoDBObject("gid" -> x._1, "aqi" -> x._2)).collect()
+
+    val mongoDBList = new MongoDBList()
+    for (each <- values) mongoDBList += each
+
+    val insertAll = MongoDBObject("timestamp"-> new DateTime(time.getTime).toDate, //.toDateTime//new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS-07:00").parse("1918-05-23 12:00:00.000-07:00"),
+      "data" -> mongoDBList)
+    collection.insert(insertAll)
+    println(s"Insert $time Successfully!!!")
+  }
+}

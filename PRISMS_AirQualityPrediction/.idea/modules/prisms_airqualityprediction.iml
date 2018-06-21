@@ -22,11 +22,11 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: antlr:antlr:2.7.7:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.mongodb.scala:mongo-scala-driver_2.11:2.1.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.mongodb.scala:mongo-scala-bson_2.11:2.1.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.mongodb:mongodb-driver-core:3.4.2:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.mongodb:mongodb-driver-async:3.4.2:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.mongodb:bson:3.4.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.mongodb:mongo-java-driver:3.0.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.mongodb:casbah-query_2.11:3.0.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.mongodb:casbah-gridfs_2.11:3.0.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.mongodb:casbah-core_2.11:3.0.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.mongodb:casbah-commons_2.11:3.0.0:jar" level="project" />
     <orderEntry type="module-library">
       <library name="sbt: unmanaged-sources-and-docs">
         <CLASSES />

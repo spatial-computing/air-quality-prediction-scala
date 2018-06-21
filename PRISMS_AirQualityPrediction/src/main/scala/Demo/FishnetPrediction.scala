@@ -3,7 +3,7 @@ package Demo
 import java.sql.Timestamp
 
 import Modeling._
-import Utils.{Consts, DBConnectionPostgres}
+import Utils.{Consts, DBConnectionMongoDB, DBConnectionPostgres}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.types.TimestampType
 import org.apache.spark.sql.{DataFrame, SparkSession, functions}
@@ -54,16 +54,20 @@ object FishnetPrediction {
     if (config("current") == true) {
 
       val maxTimestamp = DBConnectionPostgres.dbReadData(airQualityTableName, List(s"max(${airQualityColumnSet(1)}) as max_timestamp"), conditions, sparkSession)
-      val dt = airQualityCleaned.join(maxTimestamp, airQualityCleaned.col(airQualityColumnSet(1)) === maxTimestamp.col("max_timestamp"))
+        .rdd.map(x => x.getAs[Timestamp]("max_timestamp")).collect()(0)
+      val dt = airQualityCleaned.filter(airQualityCleaned.col(airQualityColumnSet(1)) === maxTimestamp)
 
       if (dt.count() <= 10)
         return
 
       val result = Prediction.predictionRandomForest(dt, trainingContext, testingContext, config)
-        .select(fishnetColumnSet.head, airQualityColumnSet(1), predictionColumn)
+        .withColumn("timestamp", functions.lit(maxTimestamp))
+        .select(testingContextId, "timestamp", predictionColumn)
 
-      if (config("write_to_DB") == true)
-        DBConnectionPostgres.dbWriteData(result, "others", "prediction_result")
+      if (config("write_to_db") == true) {
+//        DBConnectionPostgres.dbWriteData(result, "others", "prediction_result")
+        DBConnectionMongoDB.dbWriteData(result, maxTimestamp)
+      }
     }
 
     if (config("from_time_to_time") == true) {
@@ -75,13 +79,15 @@ object FishnetPrediction {
 
         val dt = airQualityCleaned.filter(airQualityCleaned.col(airQualityColumnSet(1)) === eachTime)
         if (dt.count() >= 10) {
-
           val result = Prediction.predictionRandomForest(dt, trainingContext, testingContext, config)
             .withColumn("timestamp", functions.lit(eachTime))
             .select(testingContextId, "timestamp", predictionColumn)
 
-          if (config("write_to_DB") == true)
-            DBConnectionPostgres.dbWriteData(result, "others", "prediction_result")
+          if (config("write_to_db") == true) {
+            //            DBConnectionPostgres.dbWriteData(result, "others", "prediction_result")
+            DBConnectionMongoDB.dbWriteData(result, eachTime)
+          }
+
         }
       }
     }

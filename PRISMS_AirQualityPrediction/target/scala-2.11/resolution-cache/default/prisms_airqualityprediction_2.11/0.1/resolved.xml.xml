@@ -4,7 +4,7 @@
 		module="prisms_airqualityprediction_2.11"
 		revision="0.1"
 		status="integration"
-		publication="20180619132803"
+		publication="20180620140219"
 	>
 		<description>
 		PRISMS_AirQualityPrediction
@@ -41,6 +41,6 @@
 		<dependency org="com.databricks" name="spark-csv_2.11" rev="1.5.0" conf="compile->default(compile)"/>
 		<dependency org="ch.cern.sparkmeasure" name="spark-measure_2.11" rev="0.11" conf="compile->default(compile)"/>
 		<dependency org="com.github.nscala-time" name="nscala-time_2.11" rev="2.18.0" conf="compile->default(compile)"/>
-		<dependency org="org.mongodb.scala" name="mongo-scala-driver_2.11" rev="2.1.0" conf="compile->default(compile)"/>
+		<dependency org="org.mongodb" name="casbah_2.11" rev="3.0.0" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
