@@ -7,10 +7,7 @@ import scala.io.Source
 
 
 object Main {
-
-
   def main(args: Array[String]): Unit = {
-
     Logger.getLogger("org").setLevel(Level.OFF)
 
     val sparkSession = SparkSession
@@ -42,8 +39,8 @@ object Main {
     if (testingMethod == "validation")
       stageMetrics.runAndMeasure(Validation.prediction(config, sparkSession))
 
-    stageMetrics.runAndMeasure(CrossValidation.prediction(config, sparkSession))
-    scala.io.StdIn.readLine()
+    //stageMetrics.runAndMeasure(CrossValidation.prediction(config, sparkSession))
+    //scala.io.StdIn.readLine()
   }
 
 }

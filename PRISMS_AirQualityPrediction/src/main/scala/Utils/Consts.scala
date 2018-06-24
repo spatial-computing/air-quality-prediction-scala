@@ -54,6 +54,29 @@ object Consts {
     "latitude" -> "geo_features.la_fishnet_elevation"
   )
 
+  val purpleair_sensor_la_geofeature_tablename = Map(
+    "landuse_a" -> "geo_features.purpleair_sensor_la_geofeature_landuse_a",
+    "natural" -> "geo_features.purpleair_sensor_la_geofeature_natural",
+    "natural_a" -> "geo_features.purpleair_sensor_la_geofeature_natural_a",
+    "places" -> "geo_features.purpleair_sensor_la_geofeature_places",
+    "places_a" -> "geo_features.purpleair_sensor_la_geofeature_places_a",
+    "pofw" -> "geo_features.purpleair_sensor_la_geofeature_pofw",
+    "pofw_a" -> "geo_features.purpleair_sensor_la_geofeature_pofw_a",
+    "pois" -> "geo_features.purpleair_sensor_la_geofeature_pois",
+    "pois_a" -> "geo_features.purpleair_sensor_la_geofeature_pois_a",
+    "railways" -> "geo_features.purpleair_sensor_la_geofeature_railways",
+    "roads" -> "geo_features.purpleair_sensor_la_geofeature_roads",
+    "traffic" -> "geo_features.purpleair_sensor_la_geofeature_traffic",
+    "traffic_a" -> "geo_features.purpleair_sensor_la_geofeature_traffic_a",
+    "transport" -> "geo_features.purpleair_sensor_la_geofeature_transport",
+    "transport_a" -> "geo_features.purpleair_sensor_la_geofeature_transport_a",
+    "waterways" -> "geo_features.purpleair_sensor_la_geofeature_waterways",
+    "water_a" -> "geo_features.purpleair_sensor_la_geofeature_water_a"
+    //"elevation" -> "geo_features.purpleair_sensor_la_elevation",
+    //"longitude" -> "geo_features.purpleair_sensor_la_elevation",
+    //"latitude" -> "geo_features.purpleair_sensor_la_elevation"
+  )
+
 //  val los_angeles_geofeature_tablename = Map(
 //    "aeroways" -> "los_angeles.los_angeles_sensor_geofeature_aeroways",
 //    "buildings" -> "los_angeles.los_angeles_sensor_geofeature_buildings",

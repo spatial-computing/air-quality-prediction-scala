@@ -49,4 +49,16 @@ object DBConnectionPostgres {
     )
   }
 
+
+  /*temporary*/
+  def cleanPurpleairId(sparkSession: SparkSession):List[String]={
+    val query = "(select distinct sensor_id from others.purpleair_euclidean_distance ed join others.purpleair_los_angeles_channel_a cb on ed.id = cb.parent_id where ed.eu_distance <= 50) as ed "
+    val data = sparkSession.read.jdbc(
+      url = this.dbJDBC,
+      table = query,
+      properties = this.connProperties
+    )
+    data.collect().map(_.getInt(0).toString).toList
+  }
+
 }

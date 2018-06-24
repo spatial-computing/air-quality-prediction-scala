@@ -27,7 +27,7 @@ object CrossValidation {
 
     val stations = airQualityTimeSeries.rdd.map(x => x.getAs[String](airQualityColumnSet.head)).distinct().collect().toList
 
-    val sensorGeoFeatures = GeoFeatureConstruction.getGeoFeature(Consts.airnow_reporting_area_geofeature_tablename, config, sparkSession)
+    val sensorGeoFeatures = GeoFeatureConstruction.getGeoFeature(Consts.airnow_reporting_area_geofeature_tablename, config, true, sparkSession)
     val featureName = GeoFeatureConstruction.getFeatureNames(sensorGeoFeatures, config)
 
     val schema = new StructType()

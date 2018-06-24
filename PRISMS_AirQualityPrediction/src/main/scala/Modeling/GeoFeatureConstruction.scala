@@ -75,6 +75,41 @@ object GeoFeatureConstruction {
     sparkSession.createDataFrame(geoFeatureRdd.map(x => (x._1, Vectors.dense(x._2)))).toDF(location, "geo_feature")
   }
 
+  def getGeoAbstractionSpeedUp(stations: List[String], geoFeatureData: DataFrame,
+                        featureName: RDD[(String, String, Int)],
+                        config: Map[String, Any], sparkSession: SparkSession):
+  DataFrame = {
+
+    val geoFeatureColumnSet = config("geo_feature_column_set").asInstanceOf[List[String]]
+    val location = geoFeatureColumnSet.head
+    val geoFeature = geoFeatureColumnSet(1)
+    val featureType = geoFeatureColumnSet(2)
+    val bufferSize = geoFeatureColumnSet(3)
+    val value = geoFeatureColumnSet(4)
+
+    val featureNameCollected = featureName.collect()
+
+    val geoFeatureMap = geoFeatureData.rdd.map(x => ((x.getAs[String](location), x.getAs[String](geoFeature),
+      x.getAs[String](featureType), x.getAs[Int](bufferSize)), x.getAs[Double](value))).collectAsMap()
+
+    var geoFeatureVector = new ArrayBuffer[(String, Array[Double])]
+
+    for (station <- stations) {
+      val tmp = new ArrayBuffer[Double]()
+      for (eachFeature <- featureNameCollected) {
+        if (geoFeatureMap.contains((station, eachFeature._1, eachFeature._2, eachFeature._3)))
+          tmp += geoFeatureMap((station, eachFeature._1, eachFeature._2, eachFeature._3))
+        //if this sensor contains this kind of feature if yes return val if not return 0.0
+        else
+          tmp += 0.0
+      }
+      geoFeatureVector += ((station, tmp.toArray))
+    }
+
+    val geoFeatureRdd = sparkSession.sparkContext.parallelize(geoFeatureVector)
+    sparkSession.createDataFrame(geoFeatureRdd.map(x => (x._1, Vectors.dense(x._2)))).toDF(location, "geo_feature")
+  }
+
 
   def getFeatureNames(geoFeatureData: DataFrame,
                       config: Map[String, Any]):
@@ -96,10 +131,16 @@ object GeoFeatureConstruction {
 
 
   def getGeoFeature (geoFeatureTableName: Map[String, String],
-                     config: Map[String, Any],
+                     config: Map[String, Any],withOrWithOutElevation:Boolean,
                      sparkSession: SparkSession): DataFrame = {
+    var geoFeatureSet = List[String]()
+    if(withOrWithOutElevation) {
+      geoFeatureSet = config("geo_feature_set").asInstanceOf[List[String]]
+    }
+    else {
+      geoFeatureSet = config("geo_feature_set_without_elevation").asInstanceOf[List[String]]
+    }
 
-    val geoFeatureSet = config("geo_feature_set").asInstanceOf[List[String]]
     val geoFeatureColumnSet = config("geo_feature_column_set").asInstanceOf[List[String]]
     val location = geoFeatureColumnSet.head
     val geoFeature = geoFeatureColumnSet(1)
