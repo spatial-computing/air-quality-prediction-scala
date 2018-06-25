@@ -43,8 +43,7 @@ object DBConnectionMongoDB {
     val mongoDBList = new MongoDBList()
     for (each <- values) mongoDBList += each
 
-    val insertAll = MongoDBObject("timestamp"-> new DateTime(time.getTime).toDate, //.toDateTime//new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS-07:00").parse("1918-05-23 12:00:00.000-07:00"),
-      "data" -> mongoDBList)
+    val insertAll = MongoDBObject("timestamp"-> new DateTime(time.getTime).toDate, "data" -> mongoDBList)
     collection.insert(insertAll)
     println(s"Insert $time Successfully!!!")
   }

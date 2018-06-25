@@ -27,16 +27,16 @@ object FishnetPrediction {
     val airQualityCleaned = TimeSeriesPreprocessing.dataCleaning(airQualityData, airQualityColumnSet, config).cache()
     val airQualityTimeSeries = TimeSeriesPreprocessing.timeSeriesConstruction(airQualityCleaned, airQualityColumnSet, config, sparkSession).cache()
 
-    val stations = airQualityTimeSeries.rdd.map(x => x.getAs[String](airQualityColumnSet.head)).distinct().collect().toList
+    val stations = airQualityCleaned.rdd.map(x => x.getAs[String](airQualityColumnSet.head)).distinct().collect().toList
 
-    val sensorGeoFeatures = GeoFeatureConstruction.getGeoFeature(Consts.airnow_reporting_area_geofeature_tablename, config, true, sparkSession)
+    val sensorGeoFeatures = GeoFeatureConstruction.getGeoFeature(Consts.airnow_reporting_area_geofeature_tablename, config, sparkSession)
     val featureName = GeoFeatureConstruction.getFeatureNames(sensorGeoFeatures, config)
     val geoAbstraction = GeoFeatureConstruction.getGeoAbstraction(stations, sensorGeoFeatures, featureName, config, sparkSession).cache()
 
     val fishnetGid = DBConnectionPostgres.dbReadData(fishnetTableName, fishnetColumnSet, "", sparkSession)
                      .rdd.map(x => x.getAs[String](fishnetColumnSet.head)).distinct().collect().toList
 
-    val fishnetGeoFeatures = GeoFeatureConstruction.getGeoFeature(Consts.la_fishnet_geofeature_tablename, config, true, sparkSession)
+    val fishnetGeoFeatures = GeoFeatureConstruction.getGeoFeature(Consts.la_fishnet_geofeature_tablename, config, sparkSession)
 
     val k = config("kmeans_k").asInstanceOf[Double].toInt
     val tsCluster = FeatureExtraction.clustering(airQualityTimeSeries, k, config)

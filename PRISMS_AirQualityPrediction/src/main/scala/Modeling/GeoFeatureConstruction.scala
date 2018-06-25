@@ -131,15 +131,11 @@ object GeoFeatureConstruction {
 
 
   def getGeoFeature (geoFeatureTableName: Map[String, String],
-                     config: Map[String, Any],withOrWithOutElevation:Boolean,
+                     config: Map[String, Any],
                      sparkSession: SparkSession): DataFrame = {
+
     var geoFeatureSet = List[String]()
-    if(withOrWithOutElevation) {
-      geoFeatureSet = config("geo_feature_set").asInstanceOf[List[String]]
-    }
-    else {
-      geoFeatureSet = config("geo_feature_set_without_elevation").asInstanceOf[List[String]]
-    }
+    geoFeatureSet = config("geo_feature_set").asInstanceOf[List[String]]
 
     val geoFeatureColumnSet = config("geo_feature_column_set").asInstanceOf[List[String]]
     val location = geoFeatureColumnSet.head
@@ -150,11 +146,11 @@ object GeoFeatureConstruction {
 
     // Define an empty dataframe
     val schema = new StructType()
-      .add(StructField(location, StringType, true))
-      .add(StructField(geoFeature, StringType, true))
-      .add(StructField(featureType, StringType, true))
-      .add(StructField(bufferSize, IntegerType, true))
-      .add(StructField(value, DoubleType, true))
+      .add(StructField(location, StringType))
+      .add(StructField(geoFeature, StringType))
+      .add(StructField(featureType, StringType))
+      .add(StructField(bufferSize, IntegerType))
+      .add(StructField(value, DoubleType))
 
     var geoFeatureData = sparkSession.createDataFrame(sparkSession.sparkContext.emptyRDD[Row], schema)
 

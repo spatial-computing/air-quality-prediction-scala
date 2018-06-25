@@ -20,13 +20,13 @@ We are using Openstreetmap to generate geographic features for our model. For a 
 Grids over Los Angeles County (around 3000 points), used for fine-scale prediction
 
 ## Algorithm
+Edit configuration in [config.json](/PRISMS_AirQualityPrediction/src/data/model/config.json).
 ### High Level Architecture
 >>>>>>>>![ScreenShot](/images/high_level_architecture.png)
-Edit configuration in [config.json](/PRISMS_AirQualityPrediction/src/data/model/config.json).
 ### Model Evaluation
-#### Cross Validation
+- Cross Validation
 Run [CrossValidation.scala](/PRISMS_AirQualityPrediction/src/main/scala/Demo/CrossValidation.scala) to evaluate the model with itself.
-#### Validation
+- Validation
 Run [Validation.scala](/PRISMS_AirQualityPrediction/src/main/scala/Demo/Validation.scala) to evaluate the model with other dataset.
 ### Fishnet Prediction
 Run [FishnetPrediction.scala](/PRISMS_AirQualityPrediction/src/main/scala/Demo/FishnetPrediction.scala) to get the prediction result for fishnet.

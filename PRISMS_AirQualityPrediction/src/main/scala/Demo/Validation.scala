@@ -2,8 +2,9 @@ package Demo
 
 import java.sql.Timestamp
 
+import MLlib.Evaluation
 import Modeling.{FeatureExtraction, GeoFeatureConstruction, Prediction, TimeSeriesPreprocessing}
-import Utils.{Consts, DBConnectionPostgres, Evaluation}
+import Utils.{Consts, DBConnectionPostgres}
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.{Row, SparkSession, functions}
 
@@ -30,7 +31,7 @@ object Validation {
 
     val stations = airQualityTimeSeries.rdd.map(x => x.getAs[String](airQualityColumnSet.head)).distinct().collect().toList
 
-    val sensorGeoFeatures = GeoFeatureConstruction.getGeoFeature(Consts.airnow_reporting_area_geofeature_tablename, config, false, sparkSession)
+    val sensorGeoFeatures = GeoFeatureConstruction.getGeoFeature(Consts.airnow_reporting_area_geofeature_tablename, config, sparkSession)
 
     val featureName = GeoFeatureConstruction.getFeatureNames(sensorGeoFeatures, config)
 
@@ -49,12 +50,14 @@ object Validation {
         validation id with euclidean distance lower than 50
      */
 
-    val validationId = DBConnectionPostgres.cleanPurpleairId(sparkSession)
+    val validationId = DBConnectionPostgres.dbReadData("(select distinct sensor_id from others.purpleair_euclidean_distance ed " +
+      "join others.purpleair_los_angeles_channel_a cb on ed.id = cb.parent_id where ed.eu_distance <= 50) as ed ", sparkSession)
+      .collect().map(_.getInt(0).toString).toList
 
     /*
         should change to validation geographic features
     */
-    val validationGeoFeatures = GeoFeatureConstruction.getGeoFeature(Consts.purpleair_sensor_la_geofeature_tablename, config, false, sparkSession)
+    val validationGeoFeatures = GeoFeatureConstruction.getGeoFeature(Consts.purpleair_sensor_la_geofeature_tablename, config, sparkSession)
 
     val k = config("kmeans_k").asInstanceOf[Double].toInt
     val tsCluster = FeatureExtraction.clustering(airQualityTimeSeries, k, config)
@@ -69,7 +72,7 @@ object Validation {
     /*
          Only test on the time in testing data set
       */
-    if(config("current")==true) {
+    if(config("current") == true) {
 
       val maxTimestamp = DBConnectionPostgres.dbReadData(validationTableName, List(s"max(${validationColumnSet(1)}) as max_timestamp"), "", sparkSession)
         .rdd.map(x => x.getAs[Timestamp]("max_timestamp")).collect()(0)
@@ -91,7 +94,7 @@ object Validation {
 
     }
 
-    if(config("from_time_to_time")==true){
+    if(config("from_time_to_time") == true){
 
       val times = validationData.select(validationData.col(validationColumnSet(1))).distinct()
         .rdd.map(x => x.getAs[Timestamp](validationColumnSet(1))).collect()
@@ -126,7 +129,17 @@ object Validation {
       nTotal += m
 
     }
-
-
   }
+
+//  /*temporary*/
+//  def cleanPurpleairId(sparkSession: SparkSession):List[String]={
+//    val query = "(select distinct sensor_id from others.purpleair_euclidean_distance ed " +
+//      "join others.purpleair_los_angeles_channel_a cb on ed.id = cb.parent_id where ed.eu_distance <= 50) as ed "
+//    val data = sparkSession.read.jdbc(
+//      url = this.dbJDBC,
+//      table = query,
+//      properties = this.connProperties
+//    )
+//    data.collect().map(_.getInt(0).toString).toList
+//  }
 }

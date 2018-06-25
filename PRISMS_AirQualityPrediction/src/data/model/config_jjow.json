@@ -1,0 +1,69 @@
+{
+  "testing_method": "validation",
+  "air_quality_table_name": "airnow_reporting_area",
+  "air_quality_column_set": [
+    "reporting_area",
+    "date_observed",
+    "aqi"
+  ],
+  "air_quality_request_condition": "where parameter_name='PM2.5'",
+  "geo_feature_set": [
+    "landuse_a",
+    "natural",
+    "natural_a",
+    "places",
+    "places_a",
+    "pois",
+    "pois_a",
+    "railways",
+    "roads",
+    "traffic",
+    "traffic_a",
+    "transport",
+    "transport_a",
+    "water_a",
+    "waterways"
+  ],
+
+  "geo_feature_column_set":[
+    "id",
+    "geo_feature",
+    "feature_type",
+    "buffer_size",
+    "value"
+  ],
+  "fishnet_table_name": "los_angeles_fishnet",
+  "fishnet_column_set": [
+    "gid",
+    "geom"
+  ],
+  "label_column": "label",
+  "window_size": 3,
+  "window_method": "median",
+  "kmeans_k": 8,
+  "unix_time_column": "unix_time",
+  "prediction_column": "prediction",
+  "current": true,
+  "from_time_to_time": false,
+  "start_time": "2017-01-01 00:00:00.0",
+  "end_time": "2018-01-01 00:00:00.0",
+  "rf_classifier_tree_num": 100,
+  "rf_classifier_tree_depth": 5,
+  "rf_regression_tree_num": 100,
+  "rf_regression_tree_depth": 5,
+  "write_to_db": true,
+  "write_to_csv": false,
+  "output_csv_path": "src/data/result",
+  "add_weather": false,
+  "weather": "airnow_reporting_area_weather",
+  "validate_table_name": "purpleair.purpleair_los_angeles_sensor_hourly",
+  "validate_column_set": [
+    "id",
+    "timestamp",
+    "aqi"
+  ],
+  "validate_join_column": [
+    "id",
+    "timestamp"
+  ]
+}

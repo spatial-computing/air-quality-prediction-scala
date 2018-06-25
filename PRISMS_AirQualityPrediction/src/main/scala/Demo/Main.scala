@@ -7,19 +7,22 @@ import scala.io.Source
 
 
 object Main {
+
   def main(args: Array[String]): Unit = {
     Logger.getLogger("org").setLevel(Level.OFF)
 
     val sparkSession = SparkSession
       .builder()
-      .appName("spiro")
+      .appName("air quality prediction")
       .config("spark.master", "local[*]")
       .getOrCreate()
 
     /*
         Get configuration from json file
      */
-    val configFile = "src/data/model/config.json"
+
+//    val configFile = args(0)
+    val configFile = "src/data/model/config_jjow.json"
     val lines = Source.fromFile(configFile).mkString.replace("\n", "")
     val config = JSON.parseFull(lines).get.asInstanceOf[Map[String, Any]]
     if (config.isEmpty) {
@@ -39,8 +42,10 @@ object Main {
     if (testingMethod == "validation")
       stageMetrics.runAndMeasure(Validation.prediction(config, sparkSession))
 
-    //stageMetrics.runAndMeasure(CrossValidation.prediction(config, sparkSession))
-    //scala.io.StdIn.readLine()
-  }
+    if (testingMethod == "idw")
+      stageMetrics.runAndMeasure(IDWTesting.prediction(config, sparkSession))
 
+    scala.io.StdIn.readLine()
+
+  }
 }

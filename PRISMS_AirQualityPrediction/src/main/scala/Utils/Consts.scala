@@ -3,9 +3,21 @@ package Utils
 object Consts {
 
   // Pre-define k for each monitoring station in each temporal scale
-  val kHourlyMap = Map("Central LA CO"-> 8, "W San Gabriel Vly" -> 8, "San Gabriel Mts" -> 8, "SW San Bernardino" -> 8,
-    "W San Fernando Vly" -> 9, "E San Fernando Vly" -> 9, "E San Gabriel V-2" -> 8, "E San Gabriel V-1" -> 8, "NW Coastal LA" -> 9,
-    "Santa Clarita Vly" -> 8, "SW Coastal LA" -> 9, "South Coastal LA" -> 9, "Southeast LA CO" -> 8, "Antelope Vly" -> 8)
+  val kHourlyMap = Map(
+    "Central LA CO"-> 9,
+    "W San Gabriel Vly" -> 9,
+    "San Gabriel Mts" -> 9,
+    "SW San Bernardino" -> 9,
+    "W San Fernando Vly" -> 10,
+    "E San Fernando Vly" -> 10,
+    "E San Gabriel V-2" -> 10,
+    "E San Gabriel V-1" -> 10,
+    "NW Coastal LA" -> 10,
+    "Santa Clarita Vly" -> 9,
+    "SW Coastal LA" -> 10,
+    "South Coastal LA" -> 10,
+    "Southeast LA CO" -> 9,
+    "Antelope Vly" -> 9)
 
 
   val airnow_reporting_area_geofeature_tablename = Map(
