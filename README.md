@@ -15,7 +15,12 @@ We are using Openstreetmap to generate geographic features for our model. For a 
 
 ### Other data sources
 - Purple Air
+We collect data from Purple Air[https://www.purpleair.com/], a company who sells air qualty sensors. Every sensor can return their air qualty data every minute, including PM25, PM10, PM1, temperature and humidity. Every machine have two sensors at the same location, and one sensor is related to one channel, channel(A,B). The two channels is exactly the same, this is to ensure if one channel is having noises, the other channel can still work properly. Each sensor have a three ID numbers:
 
+  1. 'id': Each sensor got their unique id
+  2. 'parent_id': For channelA sensors you got a unique 'parent_id'. If you found 'parent_id'=null, that is a channelB                         sensor. To find the two sensor in the same machine, just compare the 'parent_id' with every 'id', the two                   sensors that matches, shares the same machine and location.
+  3. 'sensor_id': Each sensor got their unique sensor_id
+                  
 - Fishnet Data
 Grids over Los Angeles County (around 3000 points), used for fine-scale prediction
 
