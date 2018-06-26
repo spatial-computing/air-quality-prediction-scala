@@ -18,6 +18,8 @@ object Validation {
     val conditions = config("air_quality_request_condition").asInstanceOf[String]
     val validationTableName = config("validate_table_name").asInstanceOf[String]
     val validationColumnSet = config("validate_column_set").asInstanceOf[List[String]]
+    var resultTable = ""
+    var errTable = ""
 
     val predictionColumn = config("prediction_column").asInstanceOf[String]
 
@@ -41,19 +43,43 @@ object Validation {
 
     val validationData = DBConnectionPostgres.dbReadData(validationTableName, validationColumnSet, "", sparkSession)
 
-    /*
-      all validtion id
-    */
-    //val validationId = validationData.rdd.map(x => x.getAs[Int](validationColumnSet.head).toString).distinct().collect().toList
+    var validationId = List[String]()
 
+
+
+    if(config("filter")==false) {
+
+      resultTable = config("time_to_time_unfilter_table").asInstanceOf[List[String]](0)
+      errTable = config("time_to_time_unfilter_table").asInstanceOf[List[String]](1)
+
+      validationId = validationData.rdd.map(x => x.getAs[Int](validationColumnSet.head).toString).distinct().collect().toList
+    }
     /*
         validation id with euclidean distance lower than 50
      */
+    if(config("filter")==true) {
 
-    val validationId = DBConnectionPostgres.dbReadData("(select distinct sensor_id from others.purpleair_euclidean_distance ed " +
-      "join others.purpleair_los_angeles_channel_a cb on ed.id = cb.parent_id where ed.eu_distance <= 50) as ed ", sparkSession)
-      .collect().map(_.getInt(0).toString).toList
+      var channel = ""
+      var joinId = ""
 
+      if(config("channel")=="a"){
+        channel = config("channel_a").asInstanceOf[List[String]](0)
+        joinId = config("channel_a").asInstanceOf[List[String]](1)
+        resultTable = config("channel_a").asInstanceOf[List[String]](2)
+        errTable = config("channel_a").asInstanceOf[List[String]](3)
+      }
+      if(config("channel")=="b"){
+        channel = config("channel_b").asInstanceOf[List[String]](0)
+        joinId = config("channel_b").asInstanceOf[List[String]](1)
+        resultTable = config("channel_b").asInstanceOf[List[String]](2)
+        errTable = config("channel_b").asInstanceOf[List[String]](3)
+      }
+
+
+      validationId = DBConnectionPostgres.dbReadData(s"(select distinct sensor_id from others.purpleair_euclidean_distance ed " +
+        s"join others.purpleair_los_angeles_channel_$channel cb on ed.id = cb.$joinId where ed.eu_distance <= 50) as ed ", sparkSession)
+        .collect().map(_.getInt(0).toString).toList
+    }
     /*
         should change to validation geographic features
     */
@@ -72,7 +98,7 @@ object Validation {
     /*
          Only test on the time in testing data set
       */
-    if(config("current") == true) {
+    if(config("current")==true) {
 
       val maxTimestamp = DBConnectionPostgres.dbReadData(validationTableName, List(s"max(${validationColumnSet(1)}) as max_timestamp"), "", sparkSession)
         .rdd.map(x => x.getAs[Timestamp]("max_timestamp")).collect()(0)
@@ -89,23 +115,28 @@ object Validation {
       val result = tmpResult.join(validationData,config("validate_join_column").asInstanceOf[List[String]])
       val (rmseVal, m) = Evaluation.rmse(result, validationColumnSet(2), predictionColumn)
       val (maeVal, n) = Evaluation.mae(result, validationColumnSet(2), predictionColumn)
-
+      DBConnectionPostgres.dbWriteData(result,"others",config("current_time_table").asInstanceOf[List[String]](1))
       println(rmseVal,m,maeVal,n)
 
+      val schema = new StructType()
+        .add(StructField("timestamp", TimestampType, true))
+        .add(StructField("rmse", DoubleType, true))
+        .add(StructField("mae", DoubleType, true))
+        .add(StructField("sensor_count", IntegerType, true))
+
+      val err = Row(maxTimestamp,rmseVal,maeVal,n)
+
+      val errDF = sparkSession.createDataFrame(
+        sparkSession.sparkContext.parallelize(Seq(err)),
+        StructType(schema)
+      )
+      DBConnectionPostgres.dbWriteData(errDF,"others",config("current_time_table").asInstanceOf[List[String]](0))
     }
 
-    if(config("from_time_to_time") == true){
+    if(config("from_time_to_time")==true){
 
       val times = validationData.select(validationData.col(validationColumnSet(1))).distinct()
         .rdd.map(x => x.getAs[Timestamp](validationColumnSet(1))).collect()
-
-      val schema = new StructType()
-        .add(StructField(validationColumnSet.head, StringType, true))
-        .add(StructField("timestamp", TimestampType, true))
-        .add(StructField(predictionColumn, DoubleType, true))
-
-      var tmpResult = sparkSession.createDataFrame(sparkSession.sparkContext.emptyRDD[Row], schema)
-
       var rmseTotal = 0.0
       var maeTotal = 0.0
       var nTotal = 0
@@ -118,28 +149,31 @@ object Validation {
             .withColumn("timestamp", functions.lit(eachTime))
             .select(testingContextId, "timestamp", predictionColumn)
 
-          tmpResult = tmpResult.union(prediction)
+          val result = prediction.join(validationData,config("validate_join_column").asInstanceOf[List[String]])
+          val (rmseVal, m) = Evaluation.rmse(result, validationColumnSet(2), predictionColumn)
+          val (maeVal, n) = Evaluation.mae(result, validationColumnSet(2), predictionColumn)
+          DBConnectionPostgres.dbWriteData(result,"others",resultTable)
+          println(eachTime,rmseVal,maeVal,n)
+
+          val schema = new StructType()
+            .add(StructField("timestamp", TimestampType, true))
+            .add(StructField("rmse", DoubleType, true))
+            .add(StructField("mae", DoubleType, true))
+            .add(StructField("sensor_count", IntegerType, true))
+
+          val err = Row(eachTime,rmseVal,maeVal,n)
+
+          val errDF = sparkSession.createDataFrame(
+            sparkSession.sparkContext.parallelize(Seq(err)),
+            StructType(schema)
+          )
+          DBConnectionPostgres.dbWriteData(errDF,"others",errTable)
+
+
+
         }
       }
-      val result = tmpResult.join(validationData, config("validate_join_column").asInstanceOf[List[String]])
-      val (rmseVal, m) = Evaluation.rmse(result, validationColumnSet(2), predictionColumn)
-      val (maeVal, n) = Evaluation.mae(result, validationColumnSet(2), predictionColumn)
-      rmseTotal += rmseVal
-      maeTotal += maeVal
-      nTotal += m
 
     }
   }
-
-//  /*temporary*/
-//  def cleanPurpleairId(sparkSession: SparkSession):List[String]={
-//    val query = "(select distinct sensor_id from others.purpleair_euclidean_distance ed " +
-//      "join others.purpleair_los_angeles_channel_a cb on ed.id = cb.parent_id where ed.eu_distance <= 50) as ed "
-//    val data = sparkSession.read.jdbc(
-//      url = this.dbJDBC,
-//      table = query,
-//      properties = this.connProperties
-//    )
-//    data.collect().map(_.getInt(0).toString).toList
-//  }
 }

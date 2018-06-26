@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PRISMS_AirQualityPrediction:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar</output-path>
+    <root id="archive" name="PRISMS_AirQualityPrediction.jar">
+      <element id="module-output" name="prisms_airqualityprediction-build" />
+      <element id="module-output" name="prisms_airqualityprediction" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/ch.cern.sparkmeasure/spark-measure_2.11/jars/spark-measure_2.11-0.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/com.github.nscala-time/nscala-time_2.11/jars/nscala-time_2.11-2.18.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.postgresql/postgresql/bundles/postgresql-9.4.1211.jre7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/com.databricks/spark-csv_2.11/jars/spark-csv_2.11-1.5.0.jar" path-in-jar="/" />
+      <element id="library" level="module" name="sbt: unmanaged-sources-and-docs" module-name="prisms_airqualityprediction" />
+    </root>
+  </artifact>
+</component>

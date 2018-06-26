@@ -21,8 +21,9 @@ object Main {
         Get configuration from json file
      */
 
-//    val configFile = args(0)
-    val configFile = "src/data/model/config_jjow.json"
+    val configFile = args(0)
+    //val configFile = "src/data/model/config_jjow.json"
+
     val lines = Source.fromFile(configFile).mkString.replace("\n", "")
     val config = JSON.parseFull(lines).get.asInstanceOf[Map[String, Any]]
     if (config.isEmpty) {
@@ -45,7 +46,7 @@ object Main {
     if (testingMethod == "idw")
       stageMetrics.runAndMeasure(IDWTesting.prediction(config, sparkSession))
 
-    scala.io.StdIn.readLine()
+    //scala.io.StdIn.readLine()
 
   }
 }
