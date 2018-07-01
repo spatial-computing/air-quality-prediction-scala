@@ -6,7 +6,7 @@
     "date_observed",
     "aqi"
   ],
-  "air_quality_request_condition": "where parameter_name='PM2.5'",
+  "air_quality_request_condition": "where parameter_name='PM2.5' and aqi > 0 ",
   "geo_feature_set": [
     "landuse_a",
     "natural",
@@ -40,14 +40,14 @@
   "label_column": "label",
   "window_size": 3,
   "window_method": "median",
-  "kmeans_k": 8,
+  "kmeans_k": 10,
   "unix_time_column": "unix_time",
   "prediction_column": "prediction",
-  "current": false,
-  "from_time_to_time": true,
+  "current": true,
+  "from_time_to_time": false,
   "start_time": "2017-01-01 00:00:00.0",
   "end_time": "2018-01-01 00:00:00.0",
-  "rf_classifier_tree_num": 100,
+  "rf_classifier_tree_num": 500,
   "rf_classifier_tree_depth": 5,
   "rf_regression_tree_num": 100,
   "rf_regression_tree_depth": 5,
@@ -62,19 +62,43 @@
     "timestamp",
     "aqi"
   ],
-  "filter":true,
-  "channel":"a",
-  "channel_a": [
+  "filter":false,
+  "unfilter_options":"min",
+  "filtered_channel":"a",
+  "filtered_channel_a": [
     "a",
     "parent_id",
     "purpleair_time_to_time_filtered_result_channel_a",
     "purpleair_time_to_time_filtered_error_channel_a"
   ],
-  "channel_b": [
+  "filtered_channel_b": [
     "b",
     "id",
     "purpleair_time_to_time_filtered_result_channel_b",
     "purpleair_time_to_time_filtered_error_channel_b"
+
+  ],
+  "time_to_time_unfilter_channel_a": [
+    "purpleair_time_to_time_unfilter_result_channel_a",
+    "purpleair_time_to_time_unfilter_error_channel_a"
+  ],
+  "time_to_time_unfilter_channel_b": [
+    "purpleair_time_to_time_unfilter_result_channel_b",
+    "purpleair_time_to_time_unfilter_error_channel_b"
+
+  ],
+  "time_to_time_unfilter_min": [
+    "purpleair_time_to_time_unfilter_result_min",
+    "purpleair_time_to_time_unfilter_error_min"
+  ],
+  "time_to_time_unfilter_max": [
+    "purpleair_time_to_time_unfilter_result_max",
+    "purpleair_time_to_time_unfilter_error_max"
+
+  ],
+  "time_to_time_unfilter_avg": [
+    "purpleair_time_to_time_unfilter_result_avg",
+    "purpleair_time_to_time_unfilter_error_avg"
 
   ],
   "validate_join_column": [
@@ -88,5 +112,10 @@
   "time_to_time_unfilter_table":[
     "purpleair_time_to_time_unfilter_result",
     "purpleair_time_to_time_unfilter_error"
+  ],
+  "sql_join_column":[
+    "pid",
+    "timestamp",
+    "aqi"
   ]
 }

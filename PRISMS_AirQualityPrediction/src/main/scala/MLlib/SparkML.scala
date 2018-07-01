@@ -47,7 +47,7 @@ object SparkML {
       .setLabelCol(labelCol)
       .setPredictionCol(outputCol)
       .setNumTrees(numTree)
-      .setMaxDepth(maxDepth)
+      //.setMaxDepth(maxDepth)
 
     rf.fit(df)
   }
@@ -61,7 +61,7 @@ object SparkML {
       .setLabelCol(labelCol)
       .setPredictionCol(outputCol)
       .setNumTrees(numTree) // Tune different parameters
-      .setMaxDepth(maxDepth)
+      //.setMaxDepth(maxDepth)
 
     rf.fit(df)
   }
