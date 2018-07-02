@@ -32,6 +32,7 @@
     "buffer_size",
     "value"
   ],
+
   "fishnet_table_name": "los_angeles_fishnet",
   "fishnet_column_set": [
     "gid",
@@ -40,14 +41,14 @@
   "label_column": "label",
   "window_size": 3,
   "window_method": "median",
-  "kmeans_k": 8,
+  "kmeans_k": 10,
   "unix_time_column": "unix_time",
   "prediction_column": "prediction",
   "current": true,
   "from_time_to_time": false,
   "start_time": "2017-01-01 00:00:00.0",
   "end_time": "2018-01-01 00:00:00.0",
-  "rf_classifier_tree_num": 100,
+  "rf_classifier_tree_num": 500,
   "rf_classifier_tree_depth": 5,
   "rf_regression_tree_num": 100,
   "rf_regression_tree_depth": 5,
@@ -58,33 +59,23 @@
   "weather": "airnow_reporting_area_weather",
   "validate_table_name": "purpleair.purpleair_los_angeles_sensor_hourly",
   "validate_column_set": [
-    "id",
+    "sensor_id",
     "timestamp",
     "aqi"
   ],
-  "filter":false,
-  "unfilter_options":"min",
-  "filtered_channel":"a",
-  "filtered_channel_a": [
-    "a",
-    "parent_id",
-    "purpleair_time_to_time_filtered_result_channel_a",
-    "purpleair_time_to_time_filtered_error_channel_a"
-  ],
-  "filtered_channel_b": [
-    "b",
+  "validate_join_column": [
     "id",
-    "purpleair_time_to_time_filtered_result_channel_b",
-    "purpleair_time_to_time_filtered_error_channel_b"
-
+    "timestamp"
   ],
-  "time_to_time_unfilter_channel_a": [
-    "purpleair_time_to_time_unfilter_result_channel_a",
-    "purpleair_time_to_time_unfilter_error_channel_a"
+  "filter":true,
+  "filter_options":"a",
+  "time_to_time_unfilter_a": [
+    "purpleair_time_to_time_unfilter_result_a",
+    "purpleair_time_to_time_unfilter_error_a"
   ],
-  "time_to_time_unfilter_channel_b": [
-    "purpleair_time_to_time_unfilter_result_channel_b",
-    "purpleair_time_to_time_unfilter_error_channel_b"
+  "time_to_time_unfilter_b": [
+    "purpleair_time_to_time_unfilter_result_b",
+    "purpleair_time_to_time_unfilter_error_b"
 
   ],
   "time_to_time_unfilter_min": [
@@ -94,28 +85,22 @@
   "time_to_time_unfilter_max": [
     "purpleair_time_to_time_unfilter_result_max",
     "purpleair_time_to_time_unfilter_error_max"
-
   ],
   "time_to_time_unfilter_avg": [
     "purpleair_time_to_time_unfilter_result_avg",
     "purpleair_time_to_time_unfilter_error_avg"
-
-  ],
-  "validate_join_column": [
-    "id",
-    "timestamp"
   ],
   "current_time_table":[
     "purpleair_current_error",
     "purpleair_current_result"
   ],
-  "time_to_time_unfilter_table":[
-    "purpleair_time_to_time_unfilter_result",
-    "purpleair_time_to_time_unfilter_error"
+  "filtered_channel_a": [
+    "purpleair_time_to_time_filtered_result_channel_a",
+    "purpleair_time_to_time_filtered_error_channel_a"
   ],
-  "sql_join_column":[
-    "pid",
-    "timestamp",
-    "aqi"
-  ]
+  "filtered_channel_b": [
+    "purpleair_time_to_time_filtered_result_channel_b",
+    "purpleair_time_to_time_filtered_error_channel_b"
+  ],
+  "unfilter_channel": "purpleair.purpleair_los_angeles_sensor_location"
 }
