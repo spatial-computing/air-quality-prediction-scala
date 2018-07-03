@@ -14,14 +14,14 @@ We are using Openstreetmap to generate geographic features for our model. For a 
 >>>>>>>>![ScreenShot](/images/geoabstraction_example.png)
 
 ### Other data sources
-- Purple Air
-We collect data from Purple Air[https://www.purpleair.com/], a company who sells air qualty sensors. Every sensor can return their air qualty data every minute, including PM25, PM10, PM1, temperature and humidity. Every machine have two sensors at the same location, and one sensor is related to one channel, channel(A,B). The two channels is exactly the same, this is to ensure if one channel is having noises, the other channel can still work properly. Each sensor have a three ID numbers:
-
-  1. 'id': Each sensor got their unique id
-  2. 'parent_id': For channelA sensors you got a unique 'parent_id'. If you found 'parent_id'=null, that is a channelB                         sensor. To find the two sensor in the same machine, just compare the 'parent_id' with every 'id', the two                   sensors that matches, shares the same machine and location.
-  3. 'sensor_id': Each sensor got their unique sensor_id
+#### Purple Air
+We are collecting data from [Purple Air](https://www.purpleair.com/). We query the Purple Air web service that each sensor updates air qualty data around every minute, including PM2.5, PM10, PM1, temperature, and humidity. Each machine has two channels (A and B) at the same location. The two-channel mechanism ensures if one channel has noises, the other one can still work properly. 
+Each unique "sensor" has three ID numbers:
+- id - Each sensor (channel A or B) has its unique id
+- sensor_id - Each sensor (channel A or B) has its unique sensor_id
+- parent_id - For channel A sensor, it has a unique parent_id. When parent_id = null, it indicates a channel B sensor. If the id from a channel B sensor equals to the parent_id from a channel A sensor, the two sensors share the same machine and location.
                   
-- Fishnet Data
+#### Fishnet Data
 Grids over Los Angeles County (around 3000 points), used for fine-scale prediction
 
 ## Algorithm
@@ -30,11 +30,11 @@ Edit configuration in [config.json](/PRISMS_AirQualityPrediction/src/data/model/
 >>>>>>>>![ScreenShot](/images/high_level_architecture.png)
 ### Model Evaluation
 - Cross Validation
-Run [CrossValidation.scala](/PRISMS_AirQualityPrediction/src/main/scala/Demo/CrossValidation.scala) to evaluate the model with itself.
+Run [CrossValidation.scala](/AirQualityPrediction/src/main/scala/Demo/CrossValidation.scala) to evaluate the model with itself.
 - Validation
 Run [Validation.scala](/PRISMS_AirQualityPrediction/src/main/scala/Demo/Validation.scala) to evaluate the model with other dataset.
 ### Fishnet Prediction
-Run [FishnetPrediction.scala](/PRISMS_AirQualityPrediction/src/main/scala/Demo/FishnetPrediction.scala) to get the prediction result for fishnet.
+Run [FishnetPrediction.scala](/AirQualityPrediction/src/main/scala/Demo/FishnetPrediction.scala) to get the prediction result for fishnet.
 (Current Time or From Time To Time)
 
 ## Appendix
