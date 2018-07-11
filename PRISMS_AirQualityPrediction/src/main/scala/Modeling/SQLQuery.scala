@@ -76,7 +76,6 @@ object SQLQuery {
         .join(idSensorIdConvert ,"sensor_id").filter(s"channel!='$filterOption'").join(euDist ,"id").select("id","timestamp","aqi").cache()
 
       validationId = validationData.rdd.map(x => x.getAs[Int]("id").toString).distinct().collect().toList
-      println(validationId.length)
     }
     (validationData,validationId,resultTable,errTable)
   }

@@ -62,7 +62,6 @@ object Validation {
       val maxTimestamp = DBConnectionPostgres.dbReadData(validationTableName, List(s"max(${validationColumnSet(1)}) as max_timestamp"), "", sparkSession)
         .rdd.map(x => x.getAs[Timestamp]("max_timestamp")).collect()(0)
 
-      val t1 = System.currentTimeMillis()
 
       val dt = airQualityCleaned.filter(airQualityCleaned.col(airQualityColumnSet(1)) === maxTimestamp)
 
@@ -112,9 +111,10 @@ object Validation {
 
           val result = prediction.join(validationData, config("validate_join_column").asInstanceOf[List[String]])
 
+          DBConnectionPostgres.dbWriteData(result,"others",resultTable)
+
           val (rmseVal, m) = Evaluation.rmse(result, validationColumnSet(2), predictionColumn)
           val (maeVal, n) = Evaluation.mae(result, validationColumnSet(2), predictionColumn)
-          DBConnectionPostgres.dbWriteData(result,"others",resultTable)
           println(eachTime,rmseVal,maeVal,n)
 
           val schema = new StructType()

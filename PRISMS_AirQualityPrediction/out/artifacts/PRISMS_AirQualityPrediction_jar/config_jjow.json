@@ -1,5 +1,5 @@
 {
-  "testing_method": "validation",
+  "testing_method": "idw",
   "air_quality_table_name": "airnow_reporting_area",
   "air_quality_column_set": [
     "reporting_area",
@@ -102,5 +102,11 @@
     "purpleair_time_to_time_filtered_result_channel_b",
     "purpleair_time_to_time_filtered_error_channel_b"
   ],
-  "unfilter_channel": "purpleair.purpleair_los_angeles_sensor_location"
+  "unfilter_channel": "purpleair.purpleair_los_angeles_sensor_location",
+  "distance_table_name": "purpleair.purpleair_los_angeles_location_distance",
+  "distance_column_set":[
+    "id_a",
+    "id_b",
+    "distance"
+  ]
 }
