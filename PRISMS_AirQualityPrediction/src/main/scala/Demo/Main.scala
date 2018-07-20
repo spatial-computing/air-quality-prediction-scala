@@ -45,7 +45,8 @@ object Main {
 
     if (testingMethod == "idw")
       stageMetrics.runAndMeasure(IDWTesting.prediction(config, sparkSession))
-
+    if (testingMethod == "fishnet_purpleair")
+      stageMetrics.runAndMeasure(FishnetPredicitonWithPurpleair.prediction(config, sparkSession))
     //scala.io.StdIn.readLine()
 
   }

@@ -7,19 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41645e8d-1da9-4ee4-8569-4a936539ac4f" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/Demo/FishnetPredicitonWithPurpleair.scala" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar/PRISMS_AirQualityPrediction.jar" afterPath="$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar/PRISMS_AirQualityPrediction.jar" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar/config_jjow.json" afterPath="$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar/config_jjow.json" />
       <change beforePath="$PROJECT_DIR$/src/data/model/config_jjow.json" afterPath="$PROJECT_DIR$/src/data/model/config_jjow.json" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Demo/IDWTesting.scala" afterPath="$PROJECT_DIR$/src/main/scala/Demo/IDWTesting.scala" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Demo/Validation.scala" afterPath="$PROJECT_DIR$/src/main/scala/Demo/Validation.scala" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Modeling/SQLQuery.scala" afterPath="$PROJECT_DIR$/src/main/scala/Modeling/SQLQuery.scala" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Demo/Main.scala" afterPath="$PROJECT_DIR$/src/main/scala/Demo/Main.scala" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Utils/DBConnectionPostgres.scala" afterPath="$PROJECT_DIR$/src/main/scala/Utils/DBConnectionPostgres.scala" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/IDWTesting$$anonfun$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/IDWTesting$$anonfun$1.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/IDWTesting$$anonfun$prediction$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/IDWTesting$$anonfun$prediction$1.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/IDWTesting$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/IDWTesting$.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/Main$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/Main$.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/Validation$$anonfun$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/Validation$$anonfun$3.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/Validation$$anonfun$prediction$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/Validation$$anonfun$prediction$1.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/Validation$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Demo/Validation$.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Modeling/SQLQuery$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Modeling/SQLQuery$.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/Utils/DBConnectionPostgres$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/Utils/DBConnectionPostgres$.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,33 +41,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/Main.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-              <folding>
-                <element signature="e#14#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DBConnectionPostgres.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/Utils/DBConnectionPostgres.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+            <state relative-caret-position="90">
+              <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IDWTesting.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/IDWTesting.scala">
+      <file leaf-file-name="FishnetPrediction.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/FishnetPrediction.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="46" lean-forward="false" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+            <state relative-caret-position="900">
+              <caret line="68" column="61" lean-forward="false" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FishnetPredicitonWithPurpleair.scala" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/FishnetPredicitonWithPurpleair.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2235">
+              <caret line="149" column="12" lean-forward="false" selection-start-line="149" selection-start-column="12" selection-end-line="149" selection-end-column="12" />
+              <folding>
+                <element signature="e#14#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/Main.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config_jjow.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar/config_jjow.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1770">
+              <caret line="118" column="25" lean-forward="false" selection-start-line="118" selection-start-column="25" selection-end-line="118" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TimeSeriesTest.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/TimeSeriesTest.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="25" column="6" lean-forward="false" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PredictionTest.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/PredictionTest.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="23" column="104" lean-forward="false" selection-start-line="23" selection-start-column="104" selection-end-line="23" selection-end-column="104" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Prediction.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/Prediction.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="23" column="104" lean-forward="false" selection-start-line="23" selection-start-column="104" selection-end-line="23" selection-end-column="104" />
               <folding />
             </state>
           </provider>
@@ -74,38 +126,8 @@
       <file leaf-file-name="Validation.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/Validation.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InverseDistanceWeight.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/Utils/InverseDistanceWeight.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SQLQuery.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/SQLQuery.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="77" column="105" lean-forward="false" selection-start-line="77" selection-start-column="105" selection-end-line="77" selection-end-column="105" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config_jjow.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/model/config_jjow.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="70" column="23" lean-forward="false" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
+            <state relative-caret-position="1317">
+              <caret line="113" column="10" lean-forward="false" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -123,7 +145,6 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>show</find>
-      <find>testingContextId</find>
       <find>conditions</find>
       <find>pre</find>
       <find>tableName</find>
@@ -146,6 +167,10 @@
       <find>resultTable</find>
       <find>cache</find>
       <find>println(System.currentTimeMillis()-t1)</find>
+      <find>condi</find>
+      <find>cache()</find>
+      <find>testingContextId</find>
+      <find>config(&quot;with_epa_sensors&quot;).asInstanceOf[Boolean]</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -159,8 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/scala/Modeling/SparkMLlib.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/GeoFeaturesTest/GenerateFeatures.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Utils/Median.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/WinOps/Median.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/WinOps/WindowDef.scala" />
@@ -186,17 +209,13 @@
         <option value="$PROJECT_DIR$/src/test/scala/TSClusteringTest/Clustering.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/TSClusteringTest/Similarity.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Utils/Evaluation.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/Modeling/TimeSeriesPreprocessing.scala" />
         <option value="$PROJECT_DIR$/build.sbt" />
         <option value="$PROJECT_DIR$/src/main/scala/Utils/DBConnectionMongoDB.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Utils/Consts.scala" />
         <option value="$PROJECT_DIR$/src/data/model/config.json" />
-        <option value="$PROJECT_DIR$/src/main/scala/Demo/FishnetPrediction.scala" />
         <option value="$PROJECT_DIR$/src/data/model/config_yijun.json" />
         <option value="$PROJECT_DIR$/src/main/scala/Demo/CrossValidation.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Modeling/FeatureExtraction.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/Modeling/Prediction.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/Demo/Main.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/SQLQuery/SQLQuery.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/DBConnection/MongoDBTest.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/IDWTesting/IDW.scala" />
@@ -204,10 +223,18 @@
         <option value="$PROJECT_DIR$/src/main/scala/MLlib/SparkML.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Modeling/GeoFeatureConstruction.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Modeling/SQLQuery.scala" />
-        <option value="$PROJECT_DIR$/src/data/model/config_jjow.json" />
-        <option value="$PROJECT_DIR$/src/main/scala/Utils/DBConnectionPostgres.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/Demo/Validation.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Demo/IDWTesting.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Demo/Main.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Modeling/TimeSeriesPreprocessing.scala" />
+        <option value="$PROJECT_DIR$/src/data/model/config_jjow.json" />
+        <option value="$PROJECT_DIR$/src/main/scala/Demo/Validation.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Modeling/Prediction.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Modeling/PredictionTest.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Demo/FishnetPrediction.scala" />
+        <option value="$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar/config_jjow.json" />
+        <option value="$PROJECT_DIR$/src/main/scala/Modeling/TimeSeriesTest.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Utils/DBConnectionPostgres.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Demo/FishnetPredicitonWithPurpleair.scala" />
       </list>
     </option>
   </component>
@@ -217,8 +244,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1280" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="width" value="636" />
     <option name="height" value="800" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -238,8 +265,7 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -336,45 +362,12 @@
               <item name="scala" type="462c0819:PsiDirectoryNode" />
               <item name="Utils" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="PRISMS_AirQualityPrediction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PRISMS_AirQualityPrediction" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PRISMS_AirQualityPrediction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PRISMS_AirQualityPrediction" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PRISMS_AirQualityPrediction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PRISMS_AirQualityPrediction" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="DBConnection" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PRISMS_AirQualityPrediction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PRISMS_AirQualityPrediction" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="IDWTesting" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PRISMS_AirQualityPrediction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PRISMS_AirQualityPrediction" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -651,15 +644,19 @@
       <workItem from="1530515740807" duration="2453000" />
       <workItem from="1530730088146" duration="171000" />
       <workItem from="1530813593341" duration="4823000" />
-      <workItem from="1531351066112" duration="133000" />
+      <workItem from="1531351066112" duration="433000" />
+      <workItem from="1531427743585" duration="16071000" />
+      <workItem from="1531856354679" duration="329000" />
+      <workItem from="1531863779833" duration="115000" />
+      <workItem from="1531934579837" duration="28482000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="274938000" />
+    <option name="totallyTimeSpent" value="320235000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -675,14 +672,15 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38232374" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32462174" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26409903" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2778542" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2609047" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25686592" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="sbt-shell-toolwindow" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -692,7 +690,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33469805" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32599726" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -715,16 +712,16 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38232374" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32599726" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32462174" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2778542" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29160935" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2819063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32714054" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="sbt-shell-toolwindow" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -835,10 +832,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/RegressionMethods.scala" />
-    <entry file="file://$PROJECT_DIR$/src/data/model/config.csv" />
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/TimeSeriesClustering.scala" />
-    <entry file="file://$PROJECT_DIR$/src/main/scala/DataSources/FishnetData.scala" />
     <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/PredictionMethods.scala" />
     <entry file="file://$PROJECT_DIR$/src/main/scala/Utils/TimeUtils.scala" />
     <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/Modeling.scala" />
@@ -872,13 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/model/config_yijun.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-sql_2.11/srcs/spark-sql_2.11-2.2.0-sources.jar!/org/apache/spark/sql/DataFrameReader.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -886,32 +872,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/Prediction.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/Utils/DBConnectionMongoDB.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/FishnetPrediction.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/CrossValidation.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="85" column="80" lean-forward="false" selection-start-line="85" selection-start-column="77" selection-end-line="85" selection-end-column="80" />
           <folding />
         </state>
       </provider>
@@ -934,39 +898,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/TimeSeriesPreprocessing.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="60" column="38" lean-forward="false" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/MLlib/SparkML.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="49" column="8" lean-forward="false" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/model/config_jjow.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="73">
           <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/FeatureExtraction.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Utils/Consts.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="69" column="74" lean-forward="false" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -978,28 +913,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/GeoFeatureConstruction.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2820">
-          <caret line="195" column="0" lean-forward="false" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/scala/IDWTesting/IDW.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="32" column="5" lean-forward="false" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/Main.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-          <folding>
-            <element signature="e#14#53#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1007,29 +924,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="21" lean-forward="false" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar/config_jjow.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-790">
-          <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/SQLQuery.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="77" column="105" lean-forward="false" selection-start-line="77" selection-start-column="105" selection-end-line="77" selection-end-column="105" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/model/config_jjow.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="70" column="23" lean-forward="false" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1041,27 +935,169 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Utils/DBConnectionPostgres.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/SQLQuery.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        <state relative-caret-position="30">
+          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="e#18#51#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Utils/Consts.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="68" column="6" lean-forward="false" selection-start-line="68" selection-start-column="6" selection-end-line="68" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/Validation.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/TimeSeriesPreprocessing.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        <state relative-caret-position="1110">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/model/config_yijun.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar/config_jjow1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/model/config_jjow.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="119" column="36" lean-forward="false" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/IDWTesting.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="46" lean-forward="false" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+        <state relative-caret-position="-1135">
+          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding>
+            <element signature="e#14#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/MLlib/SparkML.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="49" column="8" lean-forward="false" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/CrossValidation.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="28" column="132" lean-forward="false" selection-start-line="28" selection-start-column="125" selection-end-line="28" selection-end-column="132" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/FeatureExtraction.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="38" column="111" lean-forward="false" selection-start-line="38" selection-start-column="111" selection-end-line="38" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/Prediction.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="104" lean-forward="false" selection-start-line="23" selection-start-column="104" selection-end-line="23" selection-end-column="104" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/GeoFeatureConstruction.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/Validation.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1317">
+          <caret line="113" column="10" lean-forward="false" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/Main.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/FishnetPrediction.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="68" column="61" lean-forward="false" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/PredictionTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="23" column="104" lean-forward="false" selection-start-line="23" selection-start-column="104" selection-end-line="23" selection-end-column="104" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Modeling/TimeSeriesTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="25" column="6" lean-forward="false" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Utils/DBConnectionPostgres.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar/config_jjow.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1770">
+          <caret line="118" column="25" lean-forward="false" selection-start-line="118" selection-start-column="25" selection-end-line="118" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Demo/FishnetPredicitonWithPurpleair.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2235">
+          <caret line="149" column="12" lean-forward="false" selection-start-line="149" selection-start-column="12" selection-end-line="149" selection-end-column="12" />
+          <folding>
+            <element signature="e#14#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

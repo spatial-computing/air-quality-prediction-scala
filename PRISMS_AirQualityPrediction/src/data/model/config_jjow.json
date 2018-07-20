@@ -1,5 +1,5 @@
 {
-  "testing_method": "idw",
+  "testing_method": "fishnet_purpleair",
   "air_quality_table_name": "airnow_reporting_area",
   "air_quality_column_set": [
     "reporting_area",
@@ -108,5 +108,15 @@
     "id_a",
     "id_b",
     "distance"
-  ]
+  ],
+  "purpleair_table_name": "purpleair.purpleair_los_angeles_sensor_hourly",
+  "purpleair_column_set": [
+    "id",
+    "timestamp",
+    "aqi"
+  ],
+  "purpleair_request_condition": "where aqi > 0 ",
+  "with_epa_sensors":true,
+  "time_to_time_purpleair_fishnet": "fishnet_purpleair_result",
+  "time_to_time_purpleair_epa_fishnet": "fishnet_purpleair_epa_result"
 }

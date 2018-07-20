@@ -7,7 +7,7 @@ object DBConnectionPostgres {
 
   def dbJDBC: String = {
     val hostname = "localhost"
-    val port = 5432
+    val port = 11223
     val database = "prisms"
     val url = s"jdbc:postgresql://$hostname:$port/$database"
     url
