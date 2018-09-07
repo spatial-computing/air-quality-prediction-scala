@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PRISMS_AirQualityPrediction:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PRISMS_AirQualityPrediction_jar</output-path>
+    <root id="archive" name="PRISMS_AirQualityPrediction.jar">
+      <element id="module-output" name="airqualityprediction-build" />
+      <element id="module-output" name="airqualityprediction" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/ch.cern.sparkmeasure/spark-measure_2.11/jars/spark-measure_2.11-0.11.jar" path-in-jar="/" />
+      <element id="library" level="module" name="sbt: unmanaged-sources-and-docs" module-name="airqualityprediction" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.postgresql/postgresql/bundles/postgresql-9.4.1211.jre7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.mongodb/casbah-commons_2.11/jars/casbah-commons_2.11-3.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.mongodb/casbah-gridfs_2.11/jars/casbah-gridfs_2.11-3.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.mongodb/casbah-query_2.11/jars/casbah-query_2.11-3.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.mongodb/casbah-core_2.11/jars/casbah-core_2.11-3.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.mongodb/mongo-java-driver/jars/mongo-java-driver-3.0.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

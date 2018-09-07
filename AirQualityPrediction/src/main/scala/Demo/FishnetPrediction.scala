@@ -81,7 +81,7 @@ object FishnetPrediction {
         .select(airQualityCleaned.col(timeColumn)).distinct()
         .rdd.map(x => x.getAs[Timestamp](timeColumn)).collect()
 
-      times = OutputUtils.checkExistingTimes(times, config)
+//      times = OutputUtils.checkExistingTimes(times, config)
       println(times.length)
 
       for (eachTime <- times) {
@@ -94,10 +94,11 @@ object FishnetPrediction {
         if (df.count() >= (stations.length * 0.75).toInt) {
 
           val prediction = Prediction.predictionRandomForest(df, airQualityId, trainingContext, geoFeatureId, testingContext, eachTime, config)
-          OutputUtils.writePredictionResult(prediction, eachTime, config)
+//          OutputUtils.writePredictionResult(prediction, eachTime, config)
+
+          OutputUtils.outputPredictionResult(prediction, eachTime, config)
           println(eachTime + " finished")
 
-          //          Prediction.outputPredictionResult(result, eachTime, config)
         }
       }
     }

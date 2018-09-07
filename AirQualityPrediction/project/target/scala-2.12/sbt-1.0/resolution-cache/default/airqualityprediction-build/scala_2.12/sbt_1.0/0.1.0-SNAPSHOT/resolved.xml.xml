@@ -4,7 +4,7 @@
 		module="airqualityprediction-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20180626224557"
+		publication="20180703150118"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>

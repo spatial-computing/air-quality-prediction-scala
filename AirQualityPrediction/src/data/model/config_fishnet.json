@@ -1,0 +1,70 @@
+{
+  "testing_method": "fishnet",
+  "parameter_name": "PM2.5",
+  "air_quality_table_name": "airnow_reporting_area",
+  "air_quality_column_set": [
+    "reporting_area",
+    "date_observed",
+    "aqi"
+  ],
+  "air_quality_request_condition": "where parameter_name='PM2.5'",
+  "geo_feature_set": [
+    "landuse_a",
+    "natural",
+    "natural_a",
+    "places",
+    "places_a",
+    "pois",
+    "pois_a",
+    "railways",
+    "roads",
+    "traffic",
+    "traffic_a",
+    "transport",
+    "transport_a",
+    "water_a",
+    "waterways"
+  ],
+  "geo_feature_column_set":[
+    "id",
+    "geo_feature",
+    "feature_type",
+    "buffer_size",
+    "value"
+  ],
+  "fishnet_table_name": "los_angeles_fishnet_1",
+  "fishnet_column_set": [
+    "gid",
+    "st_x(geom) as longitude",
+    "st_y(geom) as latitude"
+  ],
+  "add_weather": false,
+  "weather_table_name": "airnow_reporting_area_weather",
+  "weather_column_set": [
+    "reporting_area",
+    "date_observed",
+    "temperature"
+  ],
+  "distance_table_name": "airnow_reporting_area_location_distance",
+  "distance_column_set": [
+    "id_a",
+    "id_b",
+    "distance"
+  ],
+  "window_size": 3,
+  "window_method": "median",
+  "kmeans_k": 10,
+  "rf_classifier_tree_num": 5000,
+  "rf_classifier_tree_depth": 10,
+  "rf_regression_tree_num": 100,
+  "rf_regression_tree_depth": 10,
+  "current": false,
+  "from_time_to_time": true,
+  "start_time": "2017-01-01 00:00:00.0",
+  "end_time": "2018-08-06 00:00:00.0",
+  "write_to_postgres": false,
+  "prediction_result_table_name": "others.cross_validation_pm25_result_noGT",
+  "write_to_mongodb": true,
+  "write_to_csv": false,
+  "output_path": "src/data/result"
+}

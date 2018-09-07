@@ -73,27 +73,50 @@ object Consts {
     "latitude" -> "geo_features.airnow_reporting_areas_elevation"
   )
 
+//  val la_fishnet_geofeature_tablename = Map(
+//    "landuse_a" -> "geo_features.la_fishnet_geofeature_landuse_a",
+//    "natural" -> "geo_features.la_fishnet_geofeature_natural",
+//    "natural_a" -> "geo_features.la_fishnet_geofeature_natural_a",
+//    "places" -> "geo_features.la_fishnet_geofeature_places",
+//    "places_a" -> "geo_features.la_fishnet_geofeature_places_a",
+//    "pofw" -> "geo_features.la_fishnet_geofeature_pofw",
+//    "pofw_a" -> "geo_features.la_fishnet_geofeature_pofw_a",
+//    "pois" -> "geo_features.la_fishnet_geofeature_pois",
+//    "pois_a" -> "geo_features.la_fishnet_geofeature_pois_a",
+//    "railways" -> "geo_features.la_fishnet_geofeature_railways",
+//    "roads" -> "geo_features.la_fishnet_geofeature_roads",
+//    "traffic" -> "geo_features.la_fishnet_geofeature_traffic",
+//    "traffic_a" -> "geo_features.la_fishnet_geofeature_traffic_a",
+//    "transport" -> "geo_features.la_fishnet_geofeature_transport",
+//    "transport_a" -> "geo_features.la_fishnet_geofeature_transport_a",
+//    "waterways" -> "geo_features.la_fishnet_geofeature_waterways",
+//    "water_a" -> "geo_features.la_fishnet_geofeature_water_a",
+//    "elevation" -> "geo_features.la_fishnet_elevation",
+//    "longitude" -> "geo_features.la_fishnet_elevation",
+//    "latitude" -> "geo_features.la_fishnet_elevation"
+//  )
+
   val la_fishnet_geofeature_tablename = Map(
-    "landuse_a" -> "geo_features.la_fishnet_geofeature_landuse_a",
-    "natural" -> "geo_features.la_fishnet_geofeature_natural",
-    "natural_a" -> "geo_features.la_fishnet_geofeature_natural_a",
-    "places" -> "geo_features.la_fishnet_geofeature_places",
-    "places_a" -> "geo_features.la_fishnet_geofeature_places_a",
-    "pofw" -> "geo_features.la_fishnet_geofeature_pofw",
-    "pofw_a" -> "geo_features.la_fishnet_geofeature_pofw_a",
-    "pois" -> "geo_features.la_fishnet_geofeature_pois",
-    "pois_a" -> "geo_features.la_fishnet_geofeature_pois_a",
-    "railways" -> "geo_features.la_fishnet_geofeature_railways",
-    "roads" -> "geo_features.la_fishnet_geofeature_roads",
-    "traffic" -> "geo_features.la_fishnet_geofeature_traffic",
-    "traffic_a" -> "geo_features.la_fishnet_geofeature_traffic_a",
-    "transport" -> "geo_features.la_fishnet_geofeature_transport",
-    "transport_a" -> "geo_features.la_fishnet_geofeature_transport_a",
-    "waterways" -> "geo_features.la_fishnet_geofeature_waterways",
-    "water_a" -> "geo_features.la_fishnet_geofeature_water_a",
-    "elevation" -> "geo_features.la_fishnet_elevation",
-    "longitude" -> "geo_features.la_fishnet_elevation",
-    "latitude" -> "geo_features.la_fishnet_elevation"
+    "landuse_a" -> "geo_features.la_fishnet_1_geofeature_landuse_a",
+    "natural" -> "geo_features.la_fishnet_1_geofeature_natural",
+    "natural_a" -> "geo_features.la_fishnet_1_geofeature_natural_a",
+    "places" -> "geo_features.la_fishnet_1_geofeature_places",
+    "places_a" -> "geo_features.la_fishnet_1_geofeature_places_a",
+    "pofw" -> "geo_features.la_fishnet_1_geofeature_pofw",
+    "pofw_a" -> "geo_features.la_fishnet_1_geofeature_pofw_a",
+    "pois" -> "geo_features.la_fishnet_1_geofeature_pois",
+    "pois_a" -> "geo_features.la_fishnet_1_geofeature_pois_a",
+    "railways" -> "geo_features.la_fishnet_1_geofeature_railways",
+    "roads" -> "geo_features.la_fishnet_1_geofeature_roads",
+    "traffic" -> "geo_features.la_fishnet_1_geofeature_traffic",
+    "traffic_a" -> "geo_features.la_fishnet_1_geofeature_traffic_a",
+    "transport" -> "geo_features.la_fishnet_1_geofeature_transport",
+    "transport_a" -> "geo_features.la_fishnet_1_geofeature_transport_a",
+    "waterways" -> "geo_features.la_fishnet_1_geofeature_waterways",
+    "water_a" -> "geo_features.la_fishnet_1_geofeature_water_a"
+//    "elevation" -> "geo_features.la_fishnet_1_elevation",
+//    "longitude" -> "geo_features.la_fishnet_1_elevation",
+//    "latitude" -> "geo_features.la_fishnet_1_elevation"
   )
 
   val purpleair_sensor_la_geofeature_tablename = Map(

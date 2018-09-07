@@ -1,7 +1,5 @@
 package Utils
 
-
-
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 
@@ -15,7 +13,7 @@ object DBConnectionMongoDB {
 
   def connectMongoDB (): MongoCollection = {
     val hostname = "localhost"
-    val port = 11224
+    val port = 65533
     val userName = "jon"
     val database = "jonsnow"
     val password = "snow"
@@ -35,9 +33,9 @@ object DBConnectionMongoDB {
 
     val collection = this.connectMongoDB()
     val id = df.schema.fields.head.name
-    val value = df.schema.fields(2).name
+    val predictionValue = "prediction"
 
-    val values = df.rdd.map(x => (x.getAs[String](id).toInt, x.getAs[Double](value)))
+    val values = df.rdd.map(x => (x.getAs[String](id).toInt, x.getAs[Double](predictionValue)))
       .map(x => MongoDBObject("gid" -> x._1, "aqi" -> x._2)).collect()
 
     val mongoDBList = new MongoDBList()
